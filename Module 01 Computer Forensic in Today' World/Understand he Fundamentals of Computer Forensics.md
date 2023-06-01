@@ -1,8 +1,8 @@
-##1. Hiểu cơ bản về pháp y máy tính.
+## 1. Hiểu cơ bản về pháp y máy tính.
     
 Pháp y máy tính chiếm một vai trò quan trọng trong việc theo dõi, điều tra, và truy tố tội phạm. Phần này giới thiệu về pháp y máy tình và mục tiêu của nó. Nó cũng cho biết chi tiếp tại sao và khi nào các doanh nghiệp khác nhau có thể cần tiến hành một cuộc điều tra pháp y điện tử.  
 
-###Hiểu về pháp y máy tính:
+### Hiểu về pháp y máy tính:
 
 Pháp y máy tính là một phần của pháp y số, xử lý những tội phạm mạng thâm nhập vầo thiết bị máy tính bằng mạng, máy tính, môi trường lưu trữ số. Nó đề cập đến một tập hợp những phương thức và kỹ thuật để định danh, tập hợp, bảo vệ, trích xuất, diễn giải, tài liệu hoá và trình bày chứng cứ từ thiết bị máy tính, đảm bảo rằng chứng cứ được phát hiện được chấp thuận trong suốt quá trình pháy lý hay hành chính trong toà án.
 
