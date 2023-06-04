@@ -1,0 +1,1 @@
+Phần này sẽ thảo luận về quá trình khởi động của Windows, bao gồm BIOS-MBR và UEFI-GPT, cách xác định sự có mặt của lược đồ phân vùng MBR hoặc GPT trên ổ đĩa; ngoài ra, sẽ giới thiệu các sơ đồ quy trình khởi động của Linux và macOS.
