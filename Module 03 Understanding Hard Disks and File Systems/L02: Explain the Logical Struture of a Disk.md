@@ -133,6 +133,8 @@ Hệ điều hành Windows gán một GUID cho bộ đăng ký để nhận di�
 
 ## GUID Partition Table (GPT)
 
+![](https://github.com/HuyThang25/Image/blob/main/R.jpg)
+
 Bảng phân vùng GUID (GPT) là một chuẩn phân vùng cho ổ cứng và là một phần của Giao diện Firmware Mở rộng (UEFI), thay thế giao diện firmware BIOS cổ điển. UEFI sử dụng các hệ thống giao tiếp phân vùng vượt qua các hạn chế của chuẩn phân vùng MBR.
 
 Chuẩn phân vùng MBR sử dụng 32 bit để lưu trữ Địa chỉ Khối Logic (LBA) và thông tin kích thước trên các sector 512 byte. Tương tự như MBR hiện đại, GPT sử dụng địa chỉ khối logic (LBA) thay vì địa chỉ cylinder–head–sector (CHS). Trong bảng phân vùng GUID (GPT), mỗi khối logic có kích thước 512 byte, và mỗi mục phân vùng có kích thước 128 byte; địa chỉ khối logic tiêu cực bắt đầu từ cuối của ổ đĩa, với -1 đại diện cho khối cuối cùng có thể truy cập được. LBA 0 lưu trữ MBR bảo vệ, LBA 1 chứa tiêu đề GPT, và tiêu đề GPT bao gồm một con trỏ đến bảng phân vùng hoặc Mảng Mục Phân vùng ở LBA 2. UEFI cấp 16.384 byte cho Mảng Mục Phân vùng. Vì ổ đĩa có sector 512 byte với một mảng mục phân vùng có kích thước 16.384 byte và kích thước tối thiểu là 128 byte cho mỗi mục phân vùng, LBA 34 là sector đầu tiên có thể sử dụng.
