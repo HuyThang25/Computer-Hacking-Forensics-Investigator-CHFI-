@@ -114,21 +114,25 @@ Dưới đây là các bước trong quá trình khởi động Macintosh:
 - I/O kit sử dụng cây thiết bị để liên kết các trình điều khiển đã tải với kernel.
 - Quá trình launchd, đã thay thế quá trình mach_init, chạy các mục khởi động và chuẩn bị hệ thống cho người dùng.
 
-Quá trình khởi động Linux
+### Quá trình khởi động Linux
+
 Quá trình khởi động Linux bắt đầu với BIOS, nơi tìm kiếm các thiết bị hoạt động và có thể khởi động. Hệ thống khởi động Linux từ thiết bị lưu trữ chính mà trong đó MBR chứa trình tải khởi động chính.
 
 Quá trình khởi động Linux bao gồm ba giai đoạn sau:
-Giai đoạn BIOS
-Giai đoạn trình tải khởi động (bootloader)
-Giai đoạn kernel
+- Giai đoạn BIOS
+- Giai đoạn trình tải khởi động (bootloader)
+- Giai đoạn kernel
 
-Giai đoạn BIOS
+#### Giai đoạn BIOS
+
 Giai đoạn đầu tiên của quá trình khởi động Linux là giai đoạn BIOS. Nó khởi tạo phần cứng hệ thống trong quá trình khởi động. BIOS lấy thông tin được lưu trữ trong chip bộ nhớ bán dẫn metal–oxide semiconductor (CMOS), một chip bộ nhớ hoạt động bằng pin trên bo mạch chủ chứa thông tin về cấu hình phần cứng của hệ thống. Trong quá trình khởi động, BIOS thực hiện POST để đảm bảo rằng tất cả các thành phần phần cứng của hệ thống hoạt động. Sau khi POST thành công, BIOS bắt đầu tìm kiếm ổ đĩa hoặc đĩa chứa hệ điều hành theo một chuỗi tiêu chuẩn. Nếu thiết bị được liệt kê đầu tiên không có sẵn hoặc không hoạt động, nó sẽ kiểm tra các thiết bị tiếp theo và tiếp tục như vậy. Một ổ đĩa chỉ có thể khởi động nếu nó có MBR trong sector đầu tiên được gọi là sector khởi động. Ổ đĩa cứng của hệ thống hoạt động như ổ đĩa khởi động chính, và ổ đĩa quang hoạt động như ổ đĩa khởi động phụ để khởi động hệ điều hành trong trường hợp ổ đĩa khởi động chính gặp sự cố.
 
-Giai đoạn trình tải khởi động (bootloader)
+#### Giai đoạn trình tải khởi động (bootloader)
+
 Giai đoạn trình tải khởi động bao gồm việc tải kernel Linux và RAM disk ban đầu tùy chọn. Kernel cho phép CPU truy cập RAM và đĩa cứng. Phần mềm tiền đề thứ hai là một hình ảnh của hệ thống tệp ảo tạm thời được gọi là hình ảnh initrd hoặc initial RAMdisk. Bây giờ, hệ thống chuẩn bị triển khai hệ thống tệp gốc thực tế. Sau đó, nó phát hiện thiết bị chứa hệ thống tệp và tải các module cần thiết. Bước cuối cùng của giai đoạn trình tải khởi động là tải kernel vào bộ nhớ.
 
-Giai đoạn kernel
+#### Giai đoạn kernel
+
 Khi điều khiển chuyển từ giai đoạn trình tải khởi động sang giai đoạn kernel, hệ thống tệp gốc ảo được tạo ra bởi hình ảnh initrd thực thi chương trình Linuxrc. Chương trình này tạo ra hệ thống tệp thực sự cho kernel và sau đó loại bỏ hình ảnh initrd. Sau đó, kernel tìm kiếm phần cứng mới và tải bất kỳ trình điều khiển thiết bị phù hợp nào được tìm thấy. Sau đó, nó gắn kết hệ thống tệp gốc thực tế và thực hiện quá trình khởi tạo (init). Quá trình init đọc tệp "/etc/inittab" và sử dụng tệp này để tải các tiến trình hệ thống còn lại. Điều này chuẩn bị hệ thống và người dùng có thể đăng nhập và sử dụng nó. Các trình tải khởi động phổ biến cho Linux là Linux Loader (LILO) và Grand Unified Bootloader (GRUB). Những trình tải khởi động này cho phép người dùng chọn kernel hệ điều hành mà họ muốn tải trong quá trình khởi động.
 
 
