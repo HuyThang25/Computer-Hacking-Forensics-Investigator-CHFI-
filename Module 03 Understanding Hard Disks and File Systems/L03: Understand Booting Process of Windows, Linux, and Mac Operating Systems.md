@@ -60,5 +60,60 @@ Trong cửa sổ Tính năng Thiết bị, nhấp vào tab "Volumes" để xem k
 - Get-BootSector chạy trên một ổ đĩa được định dạng bằng sơ đồ phân vùng GPT:
 - Get-BootSector chạy trên một ổ đĩa được định dạng bằng sơ đồ phân vùng MBR:
 - Get-PartitionTable: Cmdlet này phân tích bảng phân vùng GUID để tìm kiểu chính xác của sector khởi động (MBR hoặc GPT) và hiển thị đối tượng phân vùng.
+   
+### Phân tích Tiêu đề và Mục nhập GPT
+
+Hầu hết các hệ điều hành hỗ trợ truy cập đĩa GPT đều có một công cụ phân vùng cơ bản, hiển thị chi tiết về bảng phân vùng GPT. Trong Windows, các công cụ như công cụ DiskPart hiển thị thông tin về phân vùng, trong khi hệ thống Mac sử dụng tiện ích Đĩa OS X và Linux sử dụng công cụ GNU Parted.
+
+Lệnh mmls trong The Sleuth Kit có thể giúp người điều tra xem cấu trúc chi tiết của các phân vùng trên đĩa GPT, cùng với thông tin về MBR. Những người điều tra cũng có thể thu thập thông tin về tiêu đề GPT và các mục nhập phân vùng thông qua việc phân tích thủ công của ổ đĩa bằng cách sử dụng tính toán hex hoặc một công cụ chỉnh sửa gọi là hex editor.
+
+## Các Hiện vật GPT
+
+### Các phân vùng GUID bị xóa và ghi đè
+
+#### Trường hợp 1: 
+
+Trên ổ cứng, quá trình chuyển đổi hoặc phân vùng từ MBR sang GPT thông thường ghi đè lên sector số không bằng một MBR bảo vệ, xóa tất cả thông tin về bảng phân vùng cũ. Người điều tra nên tuân theo các phương pháp pháp y chuẩn để tìm kiếm các hệ thống tệp để khôi phục dữ liệu về các phân vùng trước đó được phân vùng theo MBR.
+
+#### Trường hợp 2: 
+
+Khi xảy ra quá trình chuyển đổi hoặc phân vùng từ GPT sang MBR, tiêu đề GPT và bảng vẫn có thể được giữ nguyên dựa trên công cụ được sử dụng. Người điều tra có thể dễ dàng khôi phục hoặc phân tích dữ liệu của các phân vùng đĩa như vậy.
+
+Việc triển khai các công cụ xóa phân vùng chung để xóa một phân vùng trên đĩa GPT có thể chỉ xóa MBR bảo vệ, người điều tra có thể dễ dàng tái tạo bằng cách đơn giản khôi phục lại đĩa.
+
+Theo quy định của UEFI, nếu tất cả các trường trong mục nhập phân vùng có giá trị bằng không, thì mục nhập đó không được sử dụng. Trong trường hợp này, việc khôi phục dữ liệu từ các mục nhập phân vùng GUID bị xóa không khả thi.
+
+#### GUID
+
+- Sơ đồ GPT cung cấp các GUID có giá trị điều tra vì chúng là duy nhất và có thể chứa thông tin về toàn bộ đĩa và từng phân vùng bên trong chúng.
+
+- GUID có chứa thông tin xác định duy nhất cho cả ổ đĩa và từng phân vùng riêng lẻ.
+
+- Người điều tra có thể sử dụng các công cụ như universally unique identifier (UUID) để giải mã các phiên bản khác nhau của GUID/UUID.
+
+#### Thông tin ẩn trên các đĩa GPT
+
+Kẻ xâm nhập có thể ẩn dữ liệu trên các đĩa GPT tương tự như cách họ làm trên các đĩa MBR thông thường bằng cách sử dụng các sơ đồ phân vùng đĩa linh hoạt và mở rộng. Các vị trí trên các đĩa GPT mà dữ liệu có thể bị ẩn đi bao gồm khoảng trống giữa các phân vùng, không gian chưa được phân vùng về cuối đĩa, tiêu đề GPT và các khu vực dành riêng.
+
+Các hiện vật khác có thể bao gồm tiêu đề GPT bị chỉnh sửa tạo ra các vị trí để ẩn dữ liệu, các LBA bắt đầu và kết thúc bị đặt sai vị trí, cũng như các khu vực có các thẻ dành riêng. Các phương pháp và công cụ pháp y hiện tại để thực hiện phân tích GPT không đạt yêu cầu.
+
+### Quá trình khởi động Macintosh
+Dưới đây là các bước trong quá trình khởi động Macintosh:
+
+- Quá trình khởi động Macintosh bắt đầu bằng việc kích hoạt BootROM, nơi khởi tạo phần cứng hệ thống và chọn một hệ điều hành để chạy.
+- Sau khi hệ thống Macintosh được bật, BootROM thực hiện POST để kiểm tra một số giao diện phần cứng cần thiết để khởi động.
+- Trên các máy tính Macintosh dựa trên PowerPC, Open Firmware khởi tạo các giao diện phần cứng còn lại.
+- Trên các máy tính Macintosh dựa trên Intel, EFI khởi tạo các giao diện phần cứng còn lại.
+- Sau khi khởi tạo các giao diện phần cứng, hệ thống chọn hệ điều hành.
+- Nếu hệ thống chứa nhiều hệ điều hành, nó cho phép người dùng chọn một hệ điều hành cụ thể bằng cách giữ phím Option.
+- Sau khi hoàn tất quá trình BootROM, quyền điều khiển chuyển sang trình tải khởi động BootX (PowerPC) hoặc boot.efi (Intel), nằm trong thư mục /System/Library/CoreServices.
+- Trình tải khởi động tải một phiên bản đã liên kết trước của kernel, nằm tại /System/Library/Caches/com.apple.kernelcaches.
+- Nếu kernel đã liên kết trước bị thiếu, trình tải khởi động cố gắng tải tệp cache mkext, chứa một tập hợp các trình điều khiển thiết bị.
+- Nếu tệp cache mkext cũng bị thiếu, trình tải khởi động tìm kiếm các trình điều khiển trong thư mục /System/Library/Extensions.
+- Sau khi đã tải các trình điều khiển cần thiết, trình tải khởi động bắt đầu khởi tạo kernel, cấu trúc dữ liệu Mach và BSD, cũng như I/O kit.
+- I/O kit sử dụng cây thiết bị để liên kết các trình điều khiển đã tải với kernel.
+- Quá trình launchd, đã thay thế quá trình mach_init, chạy các mục khởi động và chuẩn bị hệ thống cho người dùng.
+
+
 
 
