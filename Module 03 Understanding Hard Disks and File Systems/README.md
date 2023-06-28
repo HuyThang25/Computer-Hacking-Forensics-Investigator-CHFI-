@@ -1,4 +1,4 @@
-# Về mục tiêu
+# Mục tiêu
 
 Thiết bị lưu trữ như là Hard Disk Drivers (HDDs) và Solid-State Drives (SSDs) là một nguồn thông tin quan trọng trong điều tra pháp y. Điều tra viên phải định vị và bảo vệ dữ liệu từ những thiết bị lưu trữ để lấy bằng chứng. Do đó, việc hiểu biết về cấu trúc và cách hoạt động của thiết bị lưu trữ là rất càn thiết đối với họ. Hệ thống tệp cũng quan trọng vì việc lưu trữ và phân phối dữ liệu trong thiết bị phụ thuộc vào việc sử dụng hệ thống tệp.
 
