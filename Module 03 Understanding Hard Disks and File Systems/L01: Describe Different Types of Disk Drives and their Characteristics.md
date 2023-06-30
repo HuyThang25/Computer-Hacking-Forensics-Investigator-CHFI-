@@ -1,4 +1,4 @@
-HDDs và SSDs lưu trữ dữ liệu trong máy tính. HDDs ghi dữ liệu bằng từ tính trên một đĩa xoay quay và chứa phần chuyển động; do đó, nó dễ bị hư hỏng về mặt vật lý. SSDs sử dụng chip bộ nhớ NAND (NOT AND) để lưu trữ dữ liệu và không chứ phần chuyển động.
+HDDs và SSDs lưu trữ dữ liệu trong máy tính. HDDs ghi dữ liệu bằng từ tính trên một đĩa xoay quay và chứa phần chuyển động; do đó, nó dễ bị hư hỏng về mặt vật lý. SSDs sử dụng chip bộ nhớ NAND (NOT AND) để lưu trữ dữ liệu và không chứa phần chuyển động.
 
 ## Hiểu về HDDs
 
