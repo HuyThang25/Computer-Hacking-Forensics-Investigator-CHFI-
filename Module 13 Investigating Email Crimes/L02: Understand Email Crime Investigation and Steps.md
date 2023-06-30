@@ -102,3 +102,30 @@ Theo mặc định, tệp .ost trong Outlook 2016 được lưu tại vị trí 
 Nhà điều tra cũng có thể trích xuất các dấu vết liên quan đến email từ các lưu trữ, một thư mục mặc định được tạo bởi ứng dụng Outlook cho phép người dùng lưu trữ email cũ. Tính năng AutoArchive có sẵn trong các phiên bản Outlook 2013, 2016 và 2019, cho phép người dùng tự động lưu trữ email vào khoảng thời gian đều đặn. Các tệp lưu trữ này được lưu trữ trong định dạng tệp .pst.
 
 Để xác định vị trí của tệp lưu trữ Outlook, nhà điều tra cần có thông tin đăng nhập của nghi phạm, mở ứng dụng Outlook và điều hướng đến File-> Options->Advanced->AutoArchive->Settings.
+
+
+### Tệp Email Cục bộ trong Mozilla Thunderbird
+
+Mozilla Thunderbird là một ứng dụng email phổ biến. Khi người dùng cấu hình một tài khoản email với Thunderbird, nó tạo ra một thư mục Profiles ở vị trí sau theo mặc định: C:\Users%USERNAME%\AppData\Roaming\Thunderbird\Profiles
+
+Trong thư mục Profiles, Thunderbird lưu trữ một bản sao cục bộ của tất cả các email và bất kỳ thay đổi cấu hình nào được thực hiện bởi người dùng, chẳng hạn như các thay đổi trong Cài đặt Tài khoản. Thunderbird tạo ra một thư mục Profile mặc định khi được cài đặt và có thể tạo ra nhiều tệp hồ sơ khác nhau tùy thuộc vào cách sử dụng. Mỗi hồ sơ có quy ước đặt tên như sau: <Chuỗi số ngẫu nhiên gồm tám chữ số>.<tên_hồ_sơ>
+
+Người dùng có thể cấu hình cả tài khoản email POP3 và IMAP trong Thunderbird. Một thư mục con có tên "ImapMail" được tạo ra để lưu trữ các hồ sơ email IMAP, trong khi các email POP3 và các thư mục cục bộ khác được lưu trữ riêng biệt trong một thư mục con khác gọi là "Mail."
+
+Trong Thunderbird, tất cả các email trong các thư mục email khác nhau, như được tìm thấy trên giao diện người dùng, được lưu trữ dưới dạng các tệp MBOX không có phần mở rộng. Cũng có các tệp tóm tắt email hoặc các tệp .msf được tìm thấy cùng tên với các tệp MBOX, được sử dụng để lưu trữ chỉ mục của các email. Ví dụ, nội dung của thư mục Hộp thư đến được lưu trữ trong một tệp mbox có tên là INBOX mà không có phần mở rộng tệp.
+
+Thunderbird sử dụng một thư mục con hoặc thư mục SBD để lưu trữ chỉ mục và email trong định dạng MBOX và MSF. Tên của thư mục "SBD" phụ thuộc vào loại tài khoản email được cấu hình trong Thunderbird. Ví dụ, nếu thư mục "SBD" được tạo cho Gmail, Thunderbird sẽ tạo ra một thư mục Gmail.sbd.
+
+Nếu người dùng muốn lưu trữ một bản sao cục bộ của email để giải phóng không gian lưu trữ, họ có thể di chuyển email đó vào Local Folder, một thư mục mặc định được tạo bởi Thunderbird. Thư mục Local Folders có thể được tìm thấy ở vị trí mặc định sau nếu Thunderbird được cài đặt và cấu hình với bất kỳ tài khoản người dùng nào:
+C:\Users%USERNAME%\AppData\Roaming\Thunderbird\Profiles<Tên hồ sơ>\Mail
+
+Có hai thư mục chính trong Local Folders:
+
+- Trash: Thường được sử dụng như một thư mục "Archive" để lưu trữ các email cục bộ.
+- Unsent Messages: Được sử dụng để lưu trữ nội dung của thư mục outbox hoặc các tin nhắn đã được soạn nhưng chưa được gửi đi.
+
+Trong trường hợp của bất kỳ tài khoản Thunderbird nào được cấu hình với POP3, tất cả các email mới đều được tự động tải xuống và lưu trữ trong các thư mục cục bộ và không còn trên máy chủ.
+
+Người dùng có tài khoản IMAP có thể chọn tạo một thư mục "Archive" trong Thunderbird để sao lưu cục bộ các email quan trọng. Tệp lưu trữ cục bộ được lưu trữ theo đường dẫn mặc định C:\Users%USERNAME%\AppData\Roaming\Thunderbird\Profiles<Tên hồ sơ>\Mail\Local Folders. Tuy nhiên, người dùng cũng có thể lưu tệp lưu trữ này ở các vị trí khác.
+
+Để xác định vị trí của thư mục "Archive", các nhà điều tra có thể đăng nhập vào ứng dụng email Thunderbird bằng thông tin đăng nhập của nghi phạm, sau đó điều hướng đến Cài đặt -> Cài đặt tài khoản -> Sao chép và Thư mục, và kiểm tra đường dẫn được cung cấp trong mục lưu trữ tin nhắn (như minh họa trong hình dưới đây).
