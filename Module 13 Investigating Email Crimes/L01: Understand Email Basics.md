@@ -19,9 +19,9 @@ Người dùng cần thiết lập và cấu hình địa chỉ email trước k
 
 ### Mail Transfer Agent
 
-Mail Transfer Agent (MTA) là một thành phần quan trọng trong quá trình truyền tin nhắn email. Đây chủ yếu là một loại máy chủ email nhận tin nhắn từ mail submission agent và giải mã thông tin tiêu đề để xem tin nhắn đang đi đến đâu. Sau khi xác định được, nó chuyển tin nhắn cho MTA máy chủ tiếp theo.
+Mail Transfer Agent (MTA) là một thành phần quan trọng trong quá trình truyền tin nhắn email. Đây chủ yếu là một loại máy chủ email nhận tin nhắn từ mail submission agent và giải mã thông tin tiêu đề để xem tin nhắn đang đi đến đâu. Sau khi xác định được, nó chuyển tin nhắn cho máy chủ MTA tiếp theo.
 
-Tất cả các MTA máy chủ trò chuyện với nhau qua giao thức SMTP. Một số ví dụ về MTA bao gồm Sendmail, Exim và Postfix.
+Tất cả các máy chủ MTA trò chuyện với nhau qua giao thức SMTP. Một số ví dụ về MTA bao gồm Sendmail, Exim và Postfix.
 
 ### Mail Delivery Agent
 
