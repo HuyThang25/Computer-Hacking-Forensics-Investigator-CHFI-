@@ -1,12 +1,12 @@
-HDDs và SSDs lưu trữ dữ liệu trong máy tính. HDDs ghi dữ liệu bằng từ tính trên một đĩa xoay quay và chứ phần chuyển động; do đó, nó dễ bị hư hỏng về mặt vật lý. SSDs sử dụng chip bộ nhớ NAND (NOT AND) để lưu trữ dữ liệu và không chứ phần chuyển động.
+HDDs và SSDs lưu trữ dữ liệu trong máy tính. HDDs ghi dữ liệu bằng từ tính trên một đĩa xoay quay và chứa phần chuyển động; do đó, nó dễ bị hư hỏng về mặt vật lý. SSDs sử dụng chip bộ nhớ NAND (NOT AND) để lưu trữ dữ liệu và không chứ phần chuyển động.
 
 ## Hiểu về HDDs
 
 HDD là một thiết bị lưu trữ dữ liệu không bay hơi (không bị mất khi tắt máy) được sử dụng trên hệ thống máy tính. Một ổ cứng lưu trữ dữ liệu sử dụng phương thức giống với file cabinet. Người dùng, khi cần có thể truy cập dữ liệu và chương trình. Khi máy tính lưu trữ chương trình hay dữ liệu, hệ thống sẽ sao chép dữ liệu từ HDD tới khu vự dễ bay hơi (RAM). Khi người dùng hay hệ thống thay đổi tệp, máy tính lưu tệp bằng cách thay thế tệp cũ thành một tệp mới. HDD ghi dữ liệu bằng từ tính vào ổ cứng.
 
-HDD bao gồm nhữn đia quay, và tốc độ đọc/ ghi của nó phụ thuộc và tiếp độ quay của đĩa (số vòng trên phút - RPM). Đĩa quay càng nhanh thì tốc độ đọc/ghi của HDD càng nhanh.
+HDD bao gồm nhữn đĩa quay, và tốc độ đọc/ ghi của nó phụ thuộc và tiếp độ quay của đĩa (số vòng trên phút - RPM). Đĩa quay càng nhanh thì tốc độ đọc/ghi của HDD càng nhanh.
 
-HDDs dễ bị hỏng về mặt vật lý vì chứ những bộ phận chuyển động. Trong thời gian dài thì sẽ bị mòn và gây hỏng hóc cho ổ cứng.
+HDDs dễ bị hỏng về mặt vật lý vì chứa những bộ phận chuyển động. Trong thời gian dài thì sẽ bị mòn và gây hỏng hóc cho ổ cứng.
 
 HDDs khác nhau về các đo lường sau đây:
 
@@ -16,7 +16,7 @@ HDDs khác nhau về các đo lường sau đây:
 
 Mọi đĩa trong HDDs có 2 mặt, và mỗi mặt lại được chia thành nhiều vòng gọi là tracks (đường tròn). Tracks lưu trữ tất cả thông tin trên ổ cứng, và các tracks trên phân vùng đĩa chứa các khối dữ liệu. Một ổ cứng tiêu chuẩn chứa lên đến 10.000 tracks trên mỗi đĩa. Đầu đọc và ghi dữ liệu the thứ tựtừ tâm đĩa ra ngoài vành. Kiểu sắp xếp dữ liệu này giúp dễ dàng truy cập vào bất cứ vùng nào của ổ cứng, đó là lý do tại sao nó được gọi là "random-access storage devices (thiết bị truy cập ngẫu nhiên)".
 
-Mỗi trach bao gồm một lượng các đơn vị nhỏ hơn goi là sectors, và tất cat đĩa trong HDD có mật độ track giống nhau. Mật độ track đề cập đến số vòng trên một diện tích trên bề mặt đĩa; nó được tối ưu hoá nên mỗi cùng trên bề mặt đĩa sẽ có thể chứa tối đa số bit. Mật độ track do đó mà cũng quyết định khả năng lưu trữ ô cứng.
+Mỗi track bao gồm một lượng các đơn vị nhỏ hơn goi là sectors, và tất cả đĩa trong HDD có mật độ track giống nhau. Mật độ track đề cập đến số vòng trên một diện tích trên bề mặt đĩa; nó được tối ưu hoá nên mỗi vùng trên bề mặt đĩa sẽ có thể chứa tối đa số bit. Mật độ track do đó mà cũng quyết định khả năng lưu trữ ô cứng.
 
 Đánh số track:
 
@@ -24,11 +24,11 @@ Mỗi trach bao gồm một lượng các đơn vị nhỏ hơn goi là sectors,
 - Các đầu đọc/ghi trên cả hai mặt của một đĩa quay trong ổ đĩa cứng (HDD) được gắn chặt và khóa chung với nhau trên một bộ cần có nhiều cánh tay.
 - Các cần cánh tay di chuyển cùng nhau vào trong và ra ngoài để định vị tất cả các đầu đọc/ghi ở cùng một số track.
 - Khi đề cập đến vị trí của một track trên HDD, thường sử dụng số xi-lanh (cylinder number) thay vì số track (track number).
-- Cylinder là một tập các track bắt đầu tại vị trí giống nhau trên đĩa.
+- Cylinder là một tập các track bắt đầu tại vị trí giống nhau trên các đĩa.
 
 ## Hiểu về sector
 
-Các track chứ đơn vị nhỏ hơn gọi là sectors, và đó cũng là đơn vị nhỏ nhất trên đĩa. Sector là một thuật ngữ toán học chỉ một phần hình tròn hình thức hình chiếc bánh hoặc góc, và nó được bao quanh bởi chu vi của hình tròn và hai bán kính. 
+Các track chứa đơn vị nhỏ hơn gọi là sectors, và đó cũng là đơn vị nhỏ nhất trên đĩa. Sector là một thuật ngữ toán học chỉ một phần hình tròn hình chiếc bánh hoặc góc, và nó được bao quanh bởi chu vi của hình tròn và hai bán kính. 
 
 
 Mỗi sector thông thường lưu trữ 512 byte dữ liệu đối với HDDs và 2048 byte với CD-ROM và DVD-ROM. Tuy nhiên, các ổ cứng mới nhất sử dụng sector có kích thước 4096 byte (4 KB), với các byte bổ sung được sử dụng cho kiểm soát ổ đĩa nội bộ, thông tin hỗ trợ lưu trữ dữ liệu, phát hiện và sửa lỗi. Tất cả các sector nằm giữ hai đường tròn đồng tâm tạo thành một track. Các track kết hợp để tạo thành bề mặt của một đĩa cứng.
@@ -50,6 +50,7 @@ Xác định đỉa chỉ sector:
 - Số track và số sector được sử dụng bởi hệ điều hành và ổ đĩa để xác định thông tin được lưu trữ.
 
 ## Hiểu về 4K Sectors:
+
 Ổ đĩa cứng mới sử dụng các sector advanced-format có kích thước 4096 byte (4 KB hoặc 4K). Định dạng này sử dụng bề mặt lưu trữ trên đĩa hiệu quả bằng cách kết hợp tám sector 512 byte thành một sector duy nhất (4096 byte). Cấu trúc của sector 4K giữ nguyên các yếu tố thiết kế của sector 512 byte, với các khu vực bắt đầu và mã sửa lỗi (ECC) được đại diện bởi các ký tự định danh và đồng bộ hóa, tương ứng. Công nghệ sector 4K loại bỏ các khu vực tiêu đề dư thừa giữa các sector.
 
 ## Mật độ dữ liệu trên ổ cứng:
