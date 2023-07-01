@@ -129,3 +129,74 @@ Trong trường hợp của bất kỳ tài khoản Thunderbird nào được c�
 Người dùng có tài khoản IMAP có thể chọn tạo một thư mục "Archive" trong Thunderbird để sao lưu cục bộ các email quan trọng. Tệp lưu trữ cục bộ được lưu trữ theo đường dẫn mặc định C:\Users%USERNAME%\AppData\Roaming\Thunderbird\Profiles<Tên hồ sơ>\Mail\Local Folders. Tuy nhiên, người dùng cũng có thể lưu tệp lưu trữ này ở các vị trí khác.
 
 Để xác định vị trí của thư mục "Archive", các nhà điều tra có thể đăng nhập vào ứng dụng email Thunderbird bằng thông tin đăng nhập của nghi phạm, sau đó điều hướng đến Cài đặt -> Cài đặt tài khoản -> Sao chép và Thư mục, và kiểm tra đường dẫn được cung cấp trong mục lưu trữ tin nhắn (như minh họa trong hình dưới đây).
+
+### Thu thập các tệp email cục bộ của Thunderbird bằng SysTools MailPro+
+
+Như một nhà điều tra pháp y, bạn có thể sử dụng các công cụ như SysTools MailPro+ để thu thập dữ liệu từ các tệp email địa phương được lưu trữ bởi Thunderbird. Bạn có thể chọn một hoặc nhiều tệp mbox hoặc các thư mục email địa phương cụ thể để thu thập và phân tích pháp y.
+
+Để lấy các tệp email cục bộ của Thunderbird bằng cách sử dụng SysTools MailPro+, hãy thực hiện các bước chung sau:
+
+- Cài đặt phần mềm SysTools MailPro+ trên máy tính của bạn.
+- Khởi chạy phần mềm và chọn tùy chọn "Thêm tệp" hoặc "Thêm thư mục" để thêm các tệp email cục bộ của Thunderbird.
+- Trong cửa sổ trình duyệt tệp, điều hướng đến vị
+
+#### SysTools Maipro+
+
+Source: https://www.systoolsgroup.com
+
+SysTools MailPro+ là một công cụ đa năng và đa nhiệm để xem trước, tìm kiếm và xuất email từ nhiều client email khác nhau.
+
+Các tính năng của nó bao gồm:
+- Hỗ trợ hơn 12 định dạng tệp email khác nhau.
+- Đọc hộp thư của bất kỳ định dạng tệp email nào.
+- Tìm kiếm email trong các tệp email nguồn chỉ trong vài cú nhấp chuột.
+- Tạo và lưu trữ bộ sưu tập để quản lý hộp thư dễ dàng.
+- Tìm kiếm và trích xuất email từ ổ cứng hoặc thiết bị lưu trữ bên ngoài.
+- Thêm tệp vào ba chế độ khác nhau trên bảng điều khiển của phần mềm.
+- Xuất email sang các định dạng tệp .pst, .pdf, .msg, .html, .eml, .tiff và .csv.
+- Xem trước các loại tệp đính kèm như JPG, GIF, PNG, DOC và PDF.
+
+#### Xem trước Email
+
+Công cụ này cung cấp khả năng xem trước email trong các chế độ khác nhau như sau:
+
+- Xem Hex thông thường: Nó hiển thị email cùng với các thuộc tính như To, CC, BCC, Subject, Ngày và Giờ
+- Xem Hex: Nó hiển thị email dưới dạng mã hex theo từng bit
+- Xem thuộc tính: Nó hiển thị các thuộc tính liên quan đến email như các cờ tin nhắn, người nhận và người gửi
+- Xem tiêu đề tin nhắn: Nó cung cấp chi tiết xem như X-Priority, Message ID, Thread-Index, Content-Type và các thông tin khác
+- Xem MIME: Nó hiển thị email dưới định dạng MIME với các chi tiết khác nhau
+- Xem HTML: Nó hiển thị email dưới dạng HTML với tất cả các thẻ và nội dung
+- Xem RTF: Nó cung cấp khả năng xem trước email dưới dạng văn bản thuần túy
+- Xem đính kèm: Cho phép người dùng xem các tệp đính kèm trong email
+- Xem theo cấu trúc phân cấp: Nó hiển thị cấu trúc phân cấp của thư mục chứa tệp nguồn
+
+### Acquiring Outlook Email Files: Chuyển đổi file .ost sang .pst
+
+Chuyển đổi file .ost sang định dạng .pst cung cấp cho nhà điều tra một cách dễ dàng để thu thập dữ liệu email được lưu trữ bởi ứng dụng email Outlook. Bạn có thể sử dụng các công cụ như kernel for OST to PST để thực hiện việc này.
+
+#### Kernel for OST to PST
+
+Nguồn: https://www.nucleustechnologies.com
+
+Kernel for OST to PST có thể dễ dàng chuyển đổi các file OST sang định dạng PST và các định dạng khác như PST, EML, MSG, Office 365 và Exchange Server. Công cụ này cho phép lưu các file OST vào các máy chủ email, các ứng dụng email trực tuyến bao gồm Office 365. Nó đi kèm với bộ lọc giúp lựa chọn các mục cụ thể để di chuyển.
+
+Các tính năng:
+- Chuyển đổi các file OST mồ côi sang PST (cho bất kỳ phiên bản Outlook nào)
+- Chuyển đổi các file OST có kích thước lớn
+- Khôi phục dữ liệu người dùng từ các file OST mồ côi
+- Khôi phục các mục hộp thư Outlook đã bị xóa vĩnh viễn
+- Hiển thị các email OST và chuyển đổi chúng với tính toàn vẹn hoàn chỉnh
+- Khôi phục các email Exchange vào tài khoản Gmail/Outlook.com
+- Tìm kiếm và lưu các email cần thiết vào ví dụ, file PST, MBOX, PDF, DBX và EML/MSG
+- Xuất dữ liệu OST vào Exchange trực tiếp và Office 365
+- Khôi phục và xuất các file .nst thành các file .pst, Exchange trực tuyến và Office 365
+- Sửa chữa các file OST bị hỏng trước khi chuyển đổi
+- Cung cấp khôi phục hộp thư an toàn cho các email hiện có/đã bị xóa, tệp đính kèm, các mục lịch, vv.
+
+#### Phiên bản được hỗ trợ
+
+MS Exchange Server - 2019/2016/2013/2010/2007/2003/2000/5.5 và 5.0, MS Outlook - Office 365/2019/2016/2013/2010/2007/2003/2002/2000/98 và 97 và Outlook Express - 6.0/5.5/5.0 và 4.0
+
+#### Yêu cầu hệ điều hành
+
+Windows 10, 8.1, 8, 7, Vista, XP, 2000, 98, NT, 95, Windows Server 2016/2012/2008 R2/2008/2003 R2/2003
