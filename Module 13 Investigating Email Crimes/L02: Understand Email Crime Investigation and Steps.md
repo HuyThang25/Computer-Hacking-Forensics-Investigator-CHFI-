@@ -200,3 +200,187 @@ MS Exchange Server - 2019/2016/2013/2010/2007/2003/2000/5.5 và 5.0, MS Outlook 
 #### Yêu cầu hệ điều hành
 
 Windows 10, 8.1, 8, 7, Vista, XP, 2000, 98, NT, 95, Windows Server 2016/2012/2008 R2/2008/2003 R2/2003
+
+### Thu thập file .pst Outlook bằng SysTools MaiPro+
+
+Bạn cũng có thể sử dụng SysTools MailPro+ để xem nội dung của tệp .pst và giải nén tất cả các email. Nhận thông báo email bằng cách nhấp vào nút 'Xuất' và lưu chúng vào vị trí mong muốn.
+
+Các hình bên dưới mô tả việc xem tất cả các thư mục và email của tệp .pst liên quan đến tài khoản email đáng ngờ bằng SysTools MailPro+ và xuất các email đã chọn sang vị trí mong muốn cho mục đích thu thập.
+
+### Thu thập dữ liệu email từ tài khoản email trên web
+
+Trong quá trình điều tra tội phạm email, bước đầu tiên của nhà điều tra pháp y là thu thập dữ liệu email để thực hiện phân tích pháp y. Tuy nhiên, nhà điều tra pháp y cần có thông tin đăng nhập của nghi phạm để có thể thu thập dữ liệu email từ tài khoản email trên web (web-based email accounts). Nhà điều tra có thể sử dụng các phương pháp sau để thu thập bằng chứng email cho quá trình điều tra:
+
+- Sử dụng Google Takeout để tạo bản sao lưu ngoại tuyến của tài khoản Gmail của nghi phạm trong định dạng tệp mbox.
+- Đồng bộ hóa tài khoản email trên web với các ứng dụng email như Outlook hoặc Thunderbird để tạo bản sao dữ liệu email trên máy tính và thu thập chúng bằng các công cụ pháp y. Quá trình này sử dụng đồng bộ hóa POP3/IMAP. Để đảm bảo tính toàn vẹn của dữ liệu, nhà điều tra pháp y cần đảm bảo rằng dữ liệu không bị thay đổi trong quá trình đồng bộ hóa và sau khi đồng bộ hóa với ứng dụng email.
+
+Lưu ý: Email trên web là một phần của dịch vụ đám mây và quá trình điều tra của chúng cũng sẽ liên quan đến sự hợp tác từ nhà cung cấp dịch vụ đám mây.
+
+## Bước 3: Khám phá các thông điệp email
+
+Nhà điều tra pháp y nên kiểm tra kỹ các phần sau đây khi điều tra các thông điệp email đã thu thập được:
+
+1. Tiêu đề: Trường này của một email thông báo cho người nhận về nội dung chính của thông điệp. Hầu hết các email giả mạo được thiết kế để tạo ra cảm giác hoảng loạn/gấp rút, khiến nạn nhân mở email và đọc nội dung của nó.
+2. Địa chỉ email của người gửi: Kẻ tấn công lừa người dùng mục tiêu bằng cách làm cho các email đáng ngờ trông giống như hợp pháp. Ví dụ, một email xuất hiện dưới tên của một ngân hàng, nhưng sử dụng một tài khoản Gmail thay vì miền của ngân hàng tương ứng, là một dấu hiệu mạnh về việc giả mạo.
+3. Nội dung email: Phần thân email chứa thông điệp chính của email. Một email giả mạo có thể bao gồm các liên kết/trang web mà kẻ tấn công sử dụng để lừa người dùng cung cấp thông tin nhạy cảm. Thân email của một email giả mạo thường có ngôn ngữ/câu trúc kém chuyên nghiệp, không xuất hiện chuyên nghiệp.
+4. Tệp đính kèm email: Kẻ tấn công thường gửi các tài liệu hoặc bản sao pdf với các phần mở rộng như .exe, .vbs, .js, .wsf và .zip là tệp đính kèm trong email. Những tệp đính kèm này được thiết kế để thực thi các chương trình ẩn như phần mềm gián điệp và phần mềm độc hại trên hệ thống tính toán của người dùng, có thể đe dọa dữ liệu nhạy cảm.
+
+Lưu ý: Tham khảo Mô-đun 14 Pháp y malware để phân tích chi tiết các tệp đính kèm/tài liệu đáng ngờ.
+
+### Bước 4: Lấy thông tin tiêu đề email
+
+Tiêu đề email là một thành phần quan trọng của một email có thể giúp nhà điều tra xác định nguồn gốc của một email. Các tiêu đề này cung cấp thông tin về người gửi và người nhận email. Các chi tiết về nguồn gốc và người nhận được cung cấp bằng cách sử dụng các tiêu đề "From" và "To" tương ứng.
+
+Các tiêu đề cũng chứa thông tin về quá trình mà email đi qua trong quá trình truyền. Mỗi MTA (Mail Transfer Agent) nhận thông điệp email khi nó di chuyển từ nguồn đến đích, sẽ thay đổi phần tiêu đề email. Do đó, nhà điều tra nên kiểm tra phần tiêu đề email và thu thập dữ liệu quan trọng có giá trị chứng cứ và truy tìm kẻ phạm tội.
+
+Nhà điều tra có thể lấy thông tin tiêu đề từ bất kỳ thông điệp email nào sau khi đã thu thập được nó. Trong trường hợp họ có quyền truy cập vật lý vào hệ thống của đối tượng, họ có thể sử dụng chương trình email giống như chương trình được đối tượng sử dụng để xem các email. Quy trình lấy thông tin tiêu đề email khác nhau trong mỗi chương trình email.
+
+#### Lấy thông tin tiêu đề email trong Microsoft Outlook
+
+Các bước dưới đây liên quan đến ứng dụng Microsoft Outlook phiên bản desktop 2016:
+
+1. Khởi chạy ứng dụng Microsoft Outlook trên máy tính
+2. Xem qua tất cả các email trong tài khoản email của đối tượng và nhấp đúp vào email mà bạn muốn lưu
+3. Nhấp vào nút File ở góc trên bên trái và sau đó chọn biểu tượng Properties.
+4. Khi cửa sổ Properties mở ra, chọn văn bản tiêu đề tin nhắn từ ô Internet headers.
+5. Sao chép và dán văn bản vào bất kỳ trình soạn thảo văn bản nào và lưu file lại.
+
+Do đó, bạn có thể lưu văn bản tiêu đề tin nhắn của tất cả các email cần thiết để tiến hành điều tra tiếp về chúng.
+
+#### Lấy thông tin tiêu đề email trong Microsoft Outlook.com
+
+Các bước dưới đây liên quan đến ứng dụng web Microsoft Outlook.com:
+
+1. Đăng nhập vào Microsoft Outlook.com
+2. Nhấp vào email mà bạn muốn xem tiêu đề
+3. Nhấp vào nút Thêm hành động (More actions), di chuột đến tùy chọn Xem chi tiết tin nhắn (View message details) và nhấp vào đó
+4. Chọn văn bản tiêu đề tin nhắn từ ô Chi tiết tin nhắn (Message details), sau đó sao chép và dán văn bản vào bất kỳ trình soạn thảo văn bản nào và lưu file lại.
+
+#### Lấy thông tin tiêu đề email trong AOL
+
+1. Đăng nhập vào AOL Mail và nhấp chuột phải vào email đã nhận hoặc email mà bạn muốn xem tiêu đề
+2. Di chuột đến tùy chọn Xem nguồn tin nhắn (View Message Source)
+3. Chọn văn bản tiêu đề tin nhắn, sau đó sao chép và dán văn bản vào bất kỳ trình soạn thảo văn bản nào và lưu file lại.
+
+#### Lấy thông tin tiêu đề email trong Apple Mail
+
+1. Mở Apple Mail.
+2. Chọn email đã nhận mà bạn muốn xem tiêu đề.
+3. Điều hướng đến View Message All Headers (Xem toàn bộ tiêu đề tin nhắn).
+4. Chọn văn bản tiêu đề tin nhắn.
+5. Sao chép và dán văn bản vào bất kỳ trình soạn thảo văn bản nào và lưu file lại.
+
+#### Lấy thông tin tiêu đề email trong Gmail
+
+1. Đăng nhập vào tài khoản Gmail.
+2. Chọn email đã nhận mà bạn muốn xem tiêu đề.
+3. Nhấp vào nút More (Thêm) và điều hướng đến Show original (Hiển thị nguyên bản).
+4. Chọn văn bản tiêu đề tin nhắn, sao chép và dán nội dung vào bất kỳ trình soạn thảo văn bản nào, sau đó lưu lại file.
+
+#### Lấy thông tin tiêu đề email trong Yahoo Mail
+
+1. Đăng nhập vào tài khoản Yahoo Mail.
+2. Chọn email đã nhận mà bạn muốn xem tiêu đề.
+3. Nhấp chuột phải vào tin nhắn email và điều hướng đến tùy chọn View raw message (Xem tin nhắn nguyên bản).
+4. Chọn văn bản tiêu đề tin nhắn, sao chép và dán nội dung vào bất kỳ trình soạn thảo văn bản nào, sau đó lưu lại file.
+
+### Bước 5: Phân tích Tiêu đề Email
+
+Phân tích tiêu đề email là một khía cạnh quan trọng trong điều tra tội phạm qua email, vì chúng chứa dữ liệu siêu dữ liệu và thông tin khác về email. Các chi tiết sau đây được chứa trong tiêu đề email:
+
+1. Thời gian dấu thời gian
+
+  Đây là thời điểm và ngày gửi email.
+
+2. Từ
+
+  Tiêu đề này hiển thị địa chỉ email của người gửi như được nhìn thấy ở đầu nhận. Tiêu đề "Từ" có thể bị làm giả trong trường hợp của các email spam.
+
+3. Đến
+
+  Tiêu đề này hiển thị địa chỉ email của người nhận.
+
+4. Message ID
+
+  Mỗi email có một ID duy nhất được liên kết với nó. Không có hai email, ngay cả trong cùng một chuỗi email, có thể có cùng một Message ID. Những Message ID này được tạo ra bởi MTA/mail server duy nhất toàn cầu của hệ thống gửi email. Message ID duy nhất toàn cầu của một email là một chỉ báo về tính xác thực của nó. Phần trước "@" trong một Message ID biểu thị thời gian dựa vào email cụ thể đó. Phần sau "@" biểu thị tên miền đầy đủ (FQDN) thể hiện tên miền của bất kỳ máy chủ nào đánh dấu sự hiện diện duy nhất của nó trên mạng.
+
+  Chủ đề
+
+  Tiêu đề này hiển thị chủ đề được người gửi cung cấp.
+
+5. MIME
+
+Phần mở rộng Gửi đa mục đích trên Internet (MIME) cho phép người dùng email gửi các tệp đa phương tiện như âm thanh, video và hình ảnh như một phần của email.
+
+Ví dụ về Tiêu đề MIME
+
+- MIME-Version: Tiêu đề này cho thấy rằng tin nhắn được định dạng MIME. Mặc định, tiêu đề này được đặt giá trị là 1.0.
+- Content-Type: Tiêu đề này chỉ định kiểu nội dung và phụ loại trong một tin nhắn như sau:
+  - Text/plain hiển thị kiểu tin nhắn
+  - Audio/mp3, image/jpeg, video/mp4, lần lượt đại diện cho tin nhắn email chứa các tệp âm thanh, hình ảnh và tệp video
+  - Multipart/signature cho thấy rằng một tin nhắn email có một chữ ký
+  - Multipart/mixed cho biết rằng một email có văn bản kèm theo tệp đính kèm
+- Content Disposition: Tiêu đề này xác định cách một tin nhắn hoặc một phần cơ thể của nó phải được trình bày
+- Content-Transfer Encoding: Tiêu đề này đại diện cho mã hóa chứa trong tin nhắn
+- Content Description: Đây là một tiêu đề MIME tùy chọn được sử dụng để cung cấp thông tin bổ sung liên quan đến nội dung của một email.
+
+6. Received Headers
+
+Tiêu đề nhận (Received Headers) chứa chi tiết về tất cả các máy chủ thư mà một email đi qua trong quá trình truyền tải. Các tiêu đề này được tạo ra mỗi khi một email truyền qua một máy chủ thư/MTA trên đường đi đến người nhận.
+
+Khi một máy chủ SMTP nhận được một email, một tiêu đề nhận được (received header) sẽ được thêm vào email. Trên tiêu đề email, các tiêu đề nhận được được đặt theo thứ tự ngược, tức là tiêu đề nhận được gần đây nhất hoặc mới nhất xuất hiện đầu tiên (ở phía trên, được đánh dấu bằng A trong hình dưới đây), và tiêu đề nhận được được tạo ra đầu tiên xuất hiện cuối cùng (ở phía dưới, được đánh dấu bằng B trong hình dưới đây).
+
+Do đó, các nhà điều tra cần bắt đầu xem xét tiêu đề nhận được ở dưới cùng, vì nó phản ánh thông tin về máy chủ thư của người gửi. Sau đó, họ có thể tiếp tục lên phía trên, cung cấp cho họ dữ liệu về máy chủ thư và địa chỉ IP liên quan đến người nhận.
+
+Trong hình dưới đây, tiêu đề B hiển thị tên miền từ email được gửi đi (sonic302-19.consmr.mail.sg3.yahoo.com), địa chỉ IP liên quan (106.10.242.139) và ngày giờ theo múi giờ PDT.
+
+7. Return-Path:
+
+Tiêu đề này được sử dụng để chỉ định địa chỉ email mà một email sẽ được gửi/được trả lại nếu không thể đến được người nhận dự định. Khi một email không thể đến được người nhận dự định, nó sẽ bị trả lại cho người gửi của email, trừ khi người gửi chỉ định một địa chỉ email khác nơi các email bị trả lại sẽ được gửi đến. Nếu địa chỉ đường trả lại khác với địa chỉ email của người gửi, đây là một dấu hiệu của thư rác/giả mạo.
+
+8. Received-SPF:
+
+SPF (Sender Policy Framework) là một cơ chế ngăn chặn việc giả mạo địa chỉ người gửi. SPF cho phép tổ chức chỉ định các máy chủ có thể gửi email thay mặt cho miền của họ. Cơ chế này thực hiện một bản ghi SPF, liên quan đến một bản ghi DNS được thêm vào vùng DNS của miền của tổ chức. Trong bản ghi SPF, tổ chức có thể xác định tên máy chủ và/hoặc địa chỉ IP được ủy quyền để gửi email từ miền của họ. Qua việc triển khai SPF, kết quả trao đổi email có thể như sau:
+
+- Received-SPF: None: Điều này có nghĩa là không tìm thấy bản ghi SPF cho miền.
+- Received-SPF: Neutral: Điều này có nghĩa là địa chỉ IP của người gửi không được ủy quyền hoặc bị hạn chế gửi email thay mặt cho miền của tổ chức. Kết quả trung lập được xem xét theo cùng một cách như kết quả "None".
+- Received-SPF: Pass: Điều này có nghĩa là địa chỉ IP của người gửi được ủy quyền gửi email từ miền.
+- Received-SPF: Fail hoặc Hard fail: Điều này có nghĩa là email bị từ chối bởi máy chủ thư của người nhận vì địa chỉ IP của người gửi không được ủy quyền gửi email từ miền. SPF hard fail được thực hiện bằng cách thêm cơ chế "-all" vào bản ghi SPF.
+
+  Ví dụ: v=spf1 ip4: 207.84.200.37 -all
+
+  Trong ví dụ trên, "-all" có nghĩa là người gửi không được liệt kê trong bản ghi DNS được nêu ra (tức là 207.84.200.37) sẽ được xem là không ủy quyền và các email từ họ sẽ bị từ chối. Chỉ có địa chỉ IP 207.84.200.37 được ủy quyền gửi email.
+- Received-SPF: Softfail: Điều này có nghĩa là có khả năng địa chỉ IP có thể hoặc không thể được ủy quyền gửi email thay mặt cho miền được đề cập.
+
+  
+
+  Ví dụ: v=spf1 include:modprod.outlook.com ~all
+
+  Trong ví dụ trên, ký hiệu "~" cho biết rằng email đến từ bất kỳ máy chủ nào không được đề cập ở đây sẽ được gửi đi nhưng coi như là softfail. Trong trường hợp này, nhà cung cấp hộp thư đánh dấu tin nhắn là thư rác hoặc thư rác điện tử. Chỉ có email đến từ Microsoft Office 365 sẽ được đánh dấu là SPF PASS.
+
+9. Chữ ký DomainKeys Identified Mail (DKIM):
+
+DomainKeys Identified Mail (DKIM) là phương pháp xác thực email giúp bảo vệ người gửi và người nhận email khỏi các hình thức lừa đảo, giả mạo và gửi thư rác (spam). Kỹ thuật này xác minh rằng email nhận được bởi người nhận đã được gửi từ một máy chủ email hợp lệ. Phương pháp xác thực email này sử dụng mã hóa khóa công khai để phát hiện và ngăn chặn việc gửi email độc hại. Chữ ký DKIM này được bảo vệ thông qua quá trình mã hóa. DKIM cũng đảm bảo rằng email và nội dung của nó không bị thay đổi trong quá trình truyền tải giữa máy chủ người gửi và máy chủ người nhận. Hầu hết các nhà cung cấp dịch vụ email đều tìm kiếm chữ ký DKIM trong email.
+
+Máy chủ email nhận được email có thể xác minh chữ ký DKIM của người gửi bằng cách sử dụng khóa mật mã công khai đã đăng ký trong DNS. Máy chủ đích sử dụng khóa công khai này để giải mã chữ ký (giá trị băm) và xác minh nó với giá trị băm được tính mới. Nếu hai giá trị băm khớp nhau, thì tin nhắn được coi là xác thực và không bị thay đổi.
+
+Ví dụ về một tiêu đề chữ ký DKIM:
+
+```
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+d=gmail.com; s=20161025pm;
+h=mime-version:from:date:message-id:subject:to;
+bh=RqIJ8naev02DhEPJtlFAsdUqiGR7RyzmJ9cSxw5KzCY=;
+b=BYQQZk7S77sJJef1WEXGyTmfb8sUF6S7W8wi93lhh7WthcGjc2lk/NfpgqVpeXrhHP Ujuv36G1DVe6TBzdHsjdDLzs4b3sATMSAZNZAEdA44Tm5ooGJbhBQ8iNjRgD7eYWeEPL cF0U/eBBU1Nteh9MOqxIBJYJ1ZHGB+dz9zyfsyQAiHik3Db1GLhXCvfYdkEWydjGN2CH 7/IdO3IJccF5z5sVwPYDz69dCKmyl3IWckXU/KU+xRVX4NjffZoWHBoxOK47H7YcJZye aFoeirs/UJVZH2xKZcjSMhBS9Q/4GAuACp5ehT2GtM7BoQB/H4wVV7gdQrrHjBUEwJGX lDIQ=
+```
+
+Phân tích các phần khác nhau của tiêu đề chữ ký DKIM được cho như sau:
+
+- `v=1`: Chỉ ra phiên bản DKIM với giá trị là 1.
+- `a=rsa-sha256`: Trường "a=" cho biết thuật toán băm được sử dụng để tạo ra khóa riêng tư hoặc khóa công khai. rsa-sha1 và rsa-sha256 là hai thuật toán chữ ký chính thức được hỗ trợ để tạo ra giá trị băm cho khóa riêng tư/khóa công khai.
+- `c=relaxed/relaxed`: Trường "c=" chỉ ra thuật toán giảm thiểu (canonicalization) được sử dụng. Nó cho biết liệu có sự thay đổi trong email liên quan đến khoảng trắng hoặc dòng mới. Giá trị đầu tiên trước "/" ám chỉ phần tiêu đề và phần còn lại ám chỉ phần thân email.
+- `d=gmail.com`: Trường "d=" đại diện cho miền email của người gửi.
+- `s=20161025pm`: Trường "s=" tham chiếu đến bộ chọn (selector) để xác định khóa DKIM công khai.
+- `bh=RqIJ8naev02DhEPJtlFAsdUqiGR7RyzmJ9cSxw5KzCY=`: Đây là giá trị băm cho phần thân email theo thuật toán băm được sử dụng và sau đó được mã hóa theo chuẩn Base64.
+- `b=`: Trường này chứa chữ ký DKIM được tính toán theo trường tiêu đề được cung cấp trong trường "h=".
+
