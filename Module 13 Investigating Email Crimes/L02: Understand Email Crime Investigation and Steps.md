@@ -384,3 +384,159 @@ Phân tích các phần khác nhau của tiêu đề chữ ký DKIM được cho
 - `bh=RqIJ8naev02DhEPJtlFAsdUqiGR7RyzmJ9cSxw5KzCY=`: Đây là giá trị băm cho phần thân email theo thuật toán băm được sử dụng và sau đó được mã hóa theo chuẩn Base64.
 - `b=`: Trường này chứa chữ ký DKIM được tính toán theo trường tiêu đề được cung cấp trong trường "h=".
 
+### Phân tích Email Headers: X-Headers
+
+X-Headers là các mục tiêu không chuẩn trong tiêu đề email có thể được tùy chỉnh và gửi kèm với email để thu thập thông tin cụ thể quan trọng đối với người gửi. Những tiêu đề này thường được các nhà cung cấp hộp thư điện tử bao gồm để thu thập thông tin bộ lọc thư rác và kết quả xác thực. Một số nhà cung cấp dịch vụ email cho phép người dùng chèn dữ liệu vào X-Headers, giúp theo dõi các chỉ số liên quan đến số lượng email đã gửi, số lượng email bị trả lại, số lượng email đã mở và nội dung đã được nhấp. Theo dõi và báo cáo các chỉ số email này là rất quan trọng để quản lý giao hàng email một cách hiệu quả.
+
+X-Headers thường bắt đầu bằng chữ "X" để chỉ ra rằng chúng là các phần mở rộng cho các tiêu đề chuẩn.
+
+#### Dưới đây là một ví dụ về X-Headers:
+
+Delivered-To: someone@gmail.com
+Received: by 20.13.192.17 with SMTP id 123csp12292736jad;
+Fri, 15 Nov 2019 05:30:17 -0800 (PST)
+X-Received: by 49.36.128.219 with SMTP id x195mr7643240oix.178.1573824617320;
+Fri, 15 Nov 2019 05:30:17 -0800 (PST)
+
+Trong ví dụ trên, tiêu đề X-Received cung cấp thông tin như địa chỉ IP của máy chủ nhận, ID SMTP của máy chủ và thời gian gắn liền với email.
+
+#### Dưới đây là một số ví dụ khác về X-Headers:
+
+- X-originating-ID:
+   Nó phản ánh địa chỉ IP ban đầu của email hoặc người gửi. Nó khó để giả mạo.
+
+- X-Mailer:
+   Nó chỉ ra khách hàng email đã được sử dụng để gửi tin nhắn. Tuy nhiên, nó có thể bị giả mạo dễ dàng.
+
+-  X-Apparently-To:
+   Thông thường hiển thị khi tin nhắn được gửi đến nhiều người nhận hoặc danh sách gửi thư.
+
+-  X-Sieve:
+   Nó phản ánh tên và phiên bản của hệ thống lọc tin nhắn đang sử dụng.
+
+-  X-Delivered-To:
+   Nó phản ánh địa chỉ hộp thư nơi máy chủ gửi đã giao tin nhắn email.
+
+Những X-Headers này cung cấp thông tin bổ sung về email, nguồn gốc và các hệ thống xử lý hoặc lọc phù hợp liên quan.
+
+### Phân tích tiêu đề Email: Kiểm tra tính xác thực của Email
+
+Một địa chỉ email hợp lệ là một địa chỉ mà email có thể được gửi thành công. Nó có thể xác thực danh tính của một người hoặc một thực thể/tổ chức.
+
+Nếu các nhà điều tra pháp y gặp một địa chỉ email đáng ngờ trong quá trình điều tra tiêu đề email, họ nên sử dụng các công cụ trực tuyến như Email Dossier để xác minh tính xác thực của địa chỉ email.
+
+#### Email Dossier
+
+Nguồn: https://centralops.net
+
+Công cụ này cung cấp một trường để nhập địa chỉ email để xác minh tính hợp lệ của nó. Công cụ cung cấp thông tin về địa chỉ email, bao gồm các bản ghi trao đổi thư.
+
+Email Dossier khởi tạo phiên SMTP để kiểm tra sự chấp nhận của địa chỉ email, nhưng nó không gửi thực sự một email. Khi một địa chỉ email hợp lệ/xác thực, công cụ cung cấp các thông tin sau:
+
+- Hiển thị kết quả "3 - SMTP" trong trường "confidence rating".
+- Hiển thị các bản ghi Mail Exchange (MX) với các trường ưu tiên, trao đổi và địa chỉ IP.
+- Công cụ cũng hiển thị các phiên SMTP mà nó khởi tạo để kiểm tra việc chấp nhận địa chỉ email.
+
+Một số công cụ khác để kiểm tra tính xác thực của địa chỉ email là như sau:
+
+#### Email Address Verifier
+
+Nguồn: https://tools.verifyemailaddress.io
+
+Công cụ xác minh email này thiết lập kết nối với hộp thư để xác định xem một địa chỉ email có tồn tại không.
+
+#### Email Checker
+
+Nguồn: http://email-checker.net
+
+Công cụ này cung cấp một trường để nhập địa chỉ email để kiểm tra tính hợp lệ của nó. Công cụ này truy xuất các bản ghi trao đổi thư từ địa chỉ email và kết nối đến máy chủ thư để xác minh rằng một hộp thư cụ thể tồn tại cho địa chỉ email đã cho.
+
+#### G-Lock Software Email Verifier
+
+Nguồn: http://www.glocksoft.com
+
+Công cụ này quét từng địa chỉ email được cung cấp từ danh sách gửi thư hoặc cơ sở dữ liệu để xác minh xem địa chỉ email có hợp lệ không.
+
+### Phân tích tiêu đề Email: Khám phá địa chỉ IP nguồn
+
+Trong quá trình phân tích tiêu đề của một email đáng ngờ, các nhà điều tra cần xác định địa chỉ IP của máy chủ thư mà email được gửi từ để tìm ra kẻ tấn công. Để làm điều này, các nhà điều tra có thể sử dụng các cơ sở dữ liệu trực tuyến như cơ sở dữ liệu Whois hoặc các trang web như whatismyipaddress.com. Sau đó, họ có thể tìm địa chỉ địa lý của người gửi trong cơ sở dữ liệu.
+
+#### Cơ sở dữ liệu Smart Whois
+
+Nguồn: https://whois.urih.com
+
+Cơ sở dữ liệu Smart Whois là một cơ sở dữ liệu công khai chứa thông tin liên quan đến chủ sở hữu hoặc người liên hệ của mỗi tên miền và dữ liệu máy chủ.
+
+#### Whatismyipaddress
+
+Nguồn: www.whatismyipaddress.com
+
+whatismyipaddress.com chứa một phần tra cứu địa chỉ IP thông qua đó các nhà điều tra có thể xác định địa chỉ IPv4 hoặc IPv6 của một người dùng Internet hoặc có ý tưởng về phần nào của quốc gia hoặc thế giới mà họ đang ở.
+
+### Điều tra một Email Đáng Ngờ
+
+Nếu một email được xác định là đáng ngờ, các phần chính của nó, bao gồm trường chủ đề, nội dung email, tiêu đề email như các tiêu đề nhận được, Received-SPF và Message ID, phải được kiểm tra kỹ lưỡng để điều tra và xác định xem email có phải là độc hại hay giả mạo/huỷ diệt.
+
+Dưới đây là một số thành phần mà các nhà điều tra phải xem xét để hiểu xem một tin nhắn email có thật hay giả mạo:
+
+#### 1. Kiểm tra Nội dung Email
+
+Trong quá trình kiểm tra một tin nhắn email đáng ngờ, các nhà điều tra phải chú ý theo dõi chủ đề của email, nội dung email và tệp đính kèm để trích xuất dữ liệu có giá trị chứng cứ. Ảnh chụp màn hình dưới đây cho thấy một tin nhắn email với dòng chủ đề được viết theo cách sẽ tạo ra sự khẩn cấp đối với người nhận và do đó, thao tác người đọc để nhấp vào email và đọc tin nhắn.
+
+Ngoài ra, phần thân email chứa một liên kết đến trang đăng nhập Twitter. Tuy nhiên, khi di chuột qua liên kết được cung cấp, một địa chỉ IP (10.0.0.32) xuất hiện ở góc dưới bên trái của cửa sổ email, trông đáng ngờ vì nó giống như một địa chỉ IP riêng tư.
+
+##### 2. Kiểm tra Liên kết
+
+Nếu phát hiện bất kỳ liên kết đáng ngờ nào trong thân email, nhà điều tra có thể kiểm tra liên kết bằng cách mở nó trong một môi trường pháp y kiểm soát.
+
+Ảnh chụp màn hình dưới đây cho thấy rằng khi nhấp vào liên kết, nó sẽ chuyển hướng đến một trang web, trong đó trình duyệt hiển thị "10.0.0.32/explore" trong không gian URL thay vì URL cho trang đăng nhập Twitter.
+
+Trang được mở, tuy nhiên, chứa các trường để nhập tên người dùng và mật khẩu Twitter. Nếu người dùng mục tiêu cung cấp nhầm thông tin đăng nhập của mình, kẻ tấn công sẽ có được thông tin trên máy tấn công của họ.
+
+
+#### 3. Phân tích các Mục tiêu Tiêu đề Nhận được
+
+Để tìm thông tin về máy chủ email, địa chỉ IP và tên máy chủ được sử dụng bởi kẻ tấn công/người gửi, nhà điều tra cần xem xét các mục tiêu tiêu đề nhận được trong tiêu đề email. Chi tiết về tên máy chủ, máy chủ email và địa chỉ IP được sử dụng bởi kẻ tấn công được tiết lộ trong tiêu đề nhận được ở dưới cùng.
+Ảnh chụp màn hình trên phản ánh nội dung của mục tiêu tiêu đề nhận được cuối cùng, cho thấy rằng tin nhắn email được khởi tạo từ một trang web có tên là emkei.cz với địa chỉ IP là 93.99.104.210. Tên trang web và địa chỉ IP hiển thị này nên gây nghi ngờ, vì các phát hiện này là các chỉ báo mạnh về việc giả mạo email.
+
+#### 4. Xem xét Địa chỉ IP Khởi tạo
+
+Các nhà điều tra có thể nghiên cứu sâu hơn về địa chỉ IP được lấy từ mục tiêu tiêu đề nhận được trên trang web whatismyipaddress.com.
+Ảnh chụp màn hình trên lại xác nhận rằng địa chỉ IP thuộc về tên máy chủ emkei.cz. Nó được liên kết với một tổ chức có tên Liberty Global, có trụ sở tại Czechia, châu Âu. Các phát hiện này tiếp tục chỉ ra sự giả mạo email.
+
+#### 5. Kiểm tra Trường Received-SPF
+
+Các nhà điều tra cũng nên xem xét trường tiêu đề Received-SPF để kiểm tra xem có bất kỳ lỗi xác thực SPF nào không.
+Ảnh chụp màn hình trên cho thấy trường Received-SPF hiển thị kết quả "softfail", điều này có nghĩa là miền của jose.regan@gmail.com (ID email của người gửi như được hiển thị trong email) không ủy quyền địa chỉ IP 93.99.104.210 để gửi email thay mặt. Sự thất bại này trong xác thực là một chỉ báo khác về việc giả mạo email.
+
+#### 6. Kiểm tra tính hợp lệ của Email người gửi
+
+Sau khi có được ID email của người gửi, nhà điều tra nên sử dụng Email Dossier để xác minh xem địa chỉ email của người gửi như được hiển thị trong tin nhắn có đúng không.
+
+
+Ảnh chụp màn hình trên được lấy từ Email Dossier, cho thấy địa chỉ email là hợp lệ. Với kết quả này, nhà điều tra có thể xác định rằng tài khoản email của người dùng có tên Jose Regan có thể đã bị kẻ tấn công chiếm đoạt, hoặc ID đã được thu thập thông qua các kỹ thuật kỹ nghệ xã hội.
+
+#### 7. Phân tích Message ID
+
+Phân tích Message ID cũng là một phần quan trọng trong cuộc điều tra, vì nó giúp xác định tính xác thực của email.
+Ảnh chụp màn hình dưới đây nhấn mạnh Message ID và cho thấy tên miền đầy đủ (FQDN) hiển thị là "localhost" thay vì mail.gmail.com (là FQDN cho Gmail). Phát hiện này chứng minh khả năng email đã bị giả mạo.
+
+### Bước 6: Khôi phục các tin nhắn email đã xóa
+
+Quá trình khôi phục một tin nhắn email đã bị xóa phụ thuộc vào ứng dụng email được sử dụng để gửi email:
+
+- Khôi phục các tin nhắn email đã xóa từ Outlook PST
+
+  Trong Outlook, các tin nhắn email sau khi bị xóa sẽ được chuyển vào thư mục "Deleted Items" (Mục đã xóa). Các email đã xóa được lưu trong thư mục "Deleted Items" trong vòng 14 ngày (một khoảng thời gian giữ nguyên mặc định có thể chỉnh sửa), sau đó các tin nhắn sẽ tự động bị xóa khỏi thư mục đó. Trong trường hợp các email đã xóa này cũng bị xóa khỏi thư mục này, chúng sẽ trở thành vô hình đối với người dùng. Tuy nhiên, chúng không hoàn toàn bị xóa mà chỉ được chuyển đến không gian không được cấp phát trên ổ đĩa. Các tin nhắn email đã xóa có thể được khôi phục nếu không ghi đè không gian không được cấp phát này bằng dữ liệu mới. Các email này có thể được khôi phục bằng các công cụ pháp y như Paraben’s Electronic Evidence Examiner (E3), nếu chưa bị ghi đè.
+
+- Khôi phục các tin nhắn email đã xóa từ Thunderbird
+
+  Thunderbird lưu trữ các tin nhắn email đã bị người dùng xóa trong thư mục "Trash" (Thùng rác). Thư mục "Trash" lưu trữ các tin nhắn email đã xóa cho đến khi chúng được xóa hoàn toàn. Các công cụ pháp y như Paraben’s Electronic Evidence Examiner (E3) có thể khôi phục các tin nhắn email đã xóa này tùy thuộc vào thời điểm khôi phục được thực hiện. Nếu bất kỳ tin nhắn email nào được lưu trữ trong thư mục Thùng rác Cục bộ của Thunderbird bị xóa, việc khôi phục hoàn toàn là có thể.
+
+Các nhà điều tra pháp y có thể khôi phục dữ liệu email bị xóa vĩnh viễn từ các tệp .pst của Outlook và Thunderbird bằng cách sử dụng các công cụ như Paraben’s Electronic Evidence Examiner. Ở đây, dữ liệu email bị xóa vĩnh viễn đề cập đến các tin nhắn email đã bị xóa hoặc bị mất khỏi thư mục "Deleted Items" trong Outlook và các tin nhắn đã bị xóa hoặc bị mất khỏi thư mục "Trash" cũng như thư mục "Local Trash" của Thunderbird.
+
+#### Paraben's Electronic Evidence Examiner
+
+Nguồn: https://paraben.com
+
+E3 là một công cụ phân tích pháp y kỹ thuật số toàn diện được thiết kế để xử lý dữ liệu hiệu quả hơn trong quá trình khám phá pháp y với sự tuân thủ nguyên tắc P2 Paradigm của Paraben về tập trung chuyên môn vào toàn bộ quy trình khám phá pháp y. Nền tảng E3 sử dụng kiến trúc plug-in tiên tiến của Paraben để tạo ra các công cụ đặc biệt để khám phá các yếu tố như email, email mạng, nhật ký trò chuyện, dữ liệu di động, hệ thống tệp và phân tích tệp Internet - đồng thời tăng khả năng xử lý dữ liệu và tận dụng tài nguyên thông qua việc đa luồng và lập lịch công việc. Electronic Evidence Examiner không chỉ giá cả phải chăng mà còn chạy hiệu quả với yêu cầu phần cứng thấp hơn.
