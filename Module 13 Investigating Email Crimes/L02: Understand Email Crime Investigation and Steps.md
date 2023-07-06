@@ -288,7 +288,7 @@ Các bước dưới đây liên quan đến ứng dụng web Microsoft Outlook.
 
 Phân tích tiêu đề email là một khía cạnh quan trọng trong điều tra tội phạm qua email, vì chúng chứa dữ liệu siêu dữ liệu và thông tin khác về email. Các chi tiết sau đây được chứa trong tiêu đề email:
 
-1. Thời gian dấu thời gian
+1. Mốc thời gian
 
   Đây là thời điểm và ngày gửi email.
 
