@@ -186,12 +186,52 @@ Windows NT/2000 hỗ trợ nén tập tin, thư mục và phân vùng NTFS. Bấ
 - Trong tab General (Chung), chọn "Compress this drive to save disk space" (Nén ổ đĩa này để tiết kiệm không gian đĩa) và nhấp vào Apply (Áp dụng)
 - Trong hộp thoại Confirm Attribute Changes (Xác nhận thay đổi thuộc tính), chọn một tùy chọn và nhấp OK (Đồng ý)
 
+#### Encrypting File System (EFS)
 
+Để bảo vệ tập tin khỏi việc xử lý không đúng và đảm bảo tính bảo mật, hệ thống cần mã hóa chúng. Vì mục đích này, NTFS có tính năng tích hợp gọi là Hệ thống Mã hóa Tập tin (Encrypting File System - EFS). Mã hóa trong hệ thống tệp sử dụng công nghệ mã hóa khóa đối xứng kết hợp với công nghệ khóa công khai để thực hiện quá trình mã hóa. Người dùng được cung cấp một chứng chỉ số với một cặp khóa gồm khóa công khai và khóa riêng. Khóa riêng không áp dụng cho người dùng đăng nhập vào hệ thống cục bộ; thay vào đó, hệ thống sử dụng EFS để thiết lập một khóa cho người dùng cục bộ.
 
+Công nghệ mã hóa này duy trì một mức độ minh bạch đối với người dùng đã mã hóa một tập tin. Người dùng không cần giải mã tập tin khi truy cập để thay đổi nội dung. Sau khi người dùng hoàn thành công việc trên một tập tin, hệ thống lưu các thay đổi và tự động khôi phục chính sách mã hóa.
 
+Khi người dùng trái phép cố gắng truy cập vào một tập tin đã được mã hóa, họ sẽ nhận thông báo "Truy cập bị từ chối". Để kích hoạt chức năng mã hóa và giải mã trên hệ điều hành dựa trên Windows NT, người dùng phải thiết lập thuộc tính mã hóa cho các tập tin và thư mục mà họ muốn mã hóa hoặc giải mã. Hệ thống tự động mã hóa tất cả các tập tin và thư mục con trong một thư mục. Để tận dụng tối đa khả năng mã hóa, các chuyên gia khuyến nghị hệ thống nên có mã hóa ở mức thư mục. Điều này đồng nghĩa với việc một thư mục không nên chứa cùng lúc các tập tin đã mã hóa và các tập tin chưa mã hóa.
 
+Người dùng có thể mã hóa tập tin hoặc thư mục bằng cách sử dụng giao diện đồ họa (GUI) của Windows, sử dụng công cụ dòng lệnh như Cipher, hoặc thông qua Windows Explorer bằng cách chọn các tùy chọn thích hợp trong menu.
 
+Mã hóa quan trọng đối với các tập tin nhạy cảm trong một hệ thống, và NTFS sử dụng mã hóa để bảo vệ tập tin khỏi việc truy cập trái phép và đảm bảo mức độ bảo mật cao. Hệ thống cấp một chứng chỉ mã hóa tập tin mỗi khi người dùng mã hóa một tập tin. Nếu người dùng mất chứng chỉ đó và khóa riêng liên quan (qua đĩa hoặc bất kỳ nguyên nhân nào khác), họ có thể thực hiện phục hồi dữ liệu thông qua thành phần khóa phục hồi. Trong mạng dựa trên Windows 2000 Server, duy trì dịch vụ Active Directory, quản trị viên miền là thành phần khóa phục hồi theo mặc định. Việc chuẩn bị cho việc phục hồi tập tin được thực hiện trước, ngay cả trước khi người dùng hoặc hệ thống mã hóa chúng. Thành phần khóa phục hồi giữ một chứng chỉ đặc biệt và khóa riêng liên quan, hỗ trợ trong quá trình phục hồi dữ liệu.
 
+#### Các thành phần của EFS
+
+##### Dịch vụ EFS
+
+Dịch vụ EFS, là một phần của hệ thống bảo mật, hoạt động như một giao diện với trình điều khiển EFS bằng cách sử dụng cổng truyền thông gọi cục bộ (LPC) giữa Local Security Authority (LSA) và trình giám sát tham chiếu bảo mật trong chế độ kernel.
+Nó cũng hoạt động như một giao diện với CryptoAPI trong chế độ người dùng để tạo ra khóa mã hóa tập tin để tạo ra các trường giải mã dữ liệu (DDF) và các trường phục hồi dữ liệu (DRF). Dịch vụ này cũng hỗ trợ các giao diện lập trình ứng dụng Win32 (APIs).
+Dịch vụ EFS sử dụng CryptoAPI để trích xuất khóa mã hóa tập tin (FEK) cho một tập tin dữ liệu và sử dụng nó để mã hóa FEK và tạo ra DDF.
+
+##### Trình điều khiển EFS
+
+Trình điều khiển EFS là một trình điều khiển bộ lọc hệ thống tệp tin được xếp chồng lên NTFS. Nó kết nối với dịch vụ EFS để lấy khóa mã hóa tập tin, DDF, DRF và các dịch vụ quản lý khóa khác.
+Nó gửi thông tin này đến thư viện chạy thời gian hệ thống tệp tin EFS (FSRTL) để thực hiện các chức năng hệ thống tệp tin như mở, đọc, ghi và thêm.
+
+##### CryptoAPI
+
+CryptoAPI bao gồm một tập hợp các hàm cho phép các nhà phát triển ứng dụng mã hóa ứng dụng Win32 của họ; các hàm này cho phép ứng dụng mã hóa hoặc ký số dữ liệu và cung cấp bảo mật cho dữ liệu khóa riêng.
+
+Nó hỗ trợ các hoạt động khóa công khai và khóa đối xứng như tạo, quản lý và lưu trữ an toàn, trao đổi, mã hóa, giải mã, băm, chữ ký số và xác minh chữ ký.
+
+##### EFS FSRTL
+
+EFS FSRTL là một phần của trình điều khiển EFS thực hiện các cuộc gọi NTFS để xử lý các hoạt động hệ thống tệp tin khác nhau như đọc, ghi và mở các tập tin và thư mục đã được mã hóa, cũng như các hoạt động để mã hóa, giải mã và khôi phục dữ liệu tập tin khi hệ thống ghi nó vào hoặc đọc nó từ đĩa.
+
+Trình điều khiển EFS và FSRTL hoạt động như một thành phần duy nhất nhưng không truyền thông trực tiếp. Chúng giao tiếp với nhau bằng cách sử dụng cơ chế cuộc gọi điều khiển tệp NTFS.
+
+##### Win32 API
+
+EFS cung cấp một tập hợp các API để cung cấp truy cập vào các tính năng của nó; bộ API cung cấp giao diện lập trình cho các hoạt động như mã hóa các tập tin văn bản thô, giải mã hoặc khôi phục các tập tin mã hóa và nhập và xuất các tập tin đã mã hóa mà không cần giải mã.
+
+#### Tập tin thưa thớt (Sparse Files)
+
+Tập tin thưa thớt (sparse file) là một loại tập tin trên máy tính được thiết kế để sử dụng không gian hệ thống tệp tin hiệu quả hơn khi các khối được cấp phát cho tập tin này chủ yếu là trống rỗng. Để cải thiện hiệu suất, hệ thống tệp tin ghi thông tin ngắn gọn (metadata) về tập tin vào các khối trống để sử dụng không gian đĩa một cách tối ưu.
+
+Các tập tin thưa thớt cung cấp một kỹ thuật tiết kiệm không gian đĩa bằng cách cho phép hệ thống I/O chỉ cấp phát dữ liệu có ý nghĩa (khác không). Trong một tập tin thưa thớt NTFS, các cụm được gán cho dữ liệu mà ứng dụng xác định; trong trường hợp dữ liệu không được xác định, hệ thống tệp tin đánh dấu không gian đó là chưa được cấp phát.
 
 
 
