@@ -233,5 +233,107 @@ Tập tin thưa thớt (sparse file) là một loại tập tin trên máy tính
 
 Các tập tin thưa thớt cung cấp một kỹ thuật tiết kiệm không gian đĩa bằng cách cho phép hệ thống I/O chỉ cấp phát dữ liệu có ý nghĩa (khác không). Trong một tập tin thưa thớt NTFS, các cụm được gán cho dữ liệu mà ứng dụng xác định; trong trường hợp dữ liệu không được xác định, hệ thống tệp tin đánh dấu không gian đó là chưa được cấp phát.
 
+## Linux File Systems
+
+Hệ điều hành Linux sử dụng các hệ thống tệp tin khác nhau để lưu trữ dữ liệu. Vì các nhà điều tra có thể gặp các nguồn tấn công hoặc hệ thống nạn nhân chạy Linux, họ nên có kiến thức toàn diện về các phương pháp lưu trữ mà nó sử dụng. Phần tiếp theo cung cấp cái nhìn sâu sắc về các hệ thống tệp tin Linux phổ biến và cơ chế lưu trữ của chúng.
+
+### Linux File System Architecture 
+
+Kiến trúc hệ thống tệp tin Linux bao gồm hai phần sau:
+
+1. User space (Không gian người dùng):
+
+	Đây là khu vực bảo vệ trong bộ nhớ nơi các tiến trình người dùng chạy, và khu vực này chứa bộ nhớ khả dụng.
+
+2. Kernel space (Không gian kernel):
+
+	Đây là không gian bộ nhớ mà hệ thống cung cấp tất cả các dịch vụ kernel thông qua các tiến trình kernel. Người dùng chỉ có thể truy cập không gian này thông qua một cuộc gọi hệ thống. Một tiến trình người dùng chỉ trở thành một tiến trình kernel khi nó thực hiện một cuộc gọi hệ thống.
+
+
+Thư viện GNU C (glibc) nằm giữa không gian người dùng và không gian kernel và cung cấp giao diện cuộc gọi hệ thống kết nối kernel với các ứng dụng không gian người dùng.
+
+Hệ thống tệp ảo (VFS) là một lớp trừu tượng trên cùng của một hệ thống tệp tin hoàn chỉnh. Nó cho phép các ứng dụng khách truy cập vào các hệ thống tệp tin khác nhau. Kiến trúc nội bộ của nó bao gồm một lớp phân tán, cung cấp trừu tượng hóa hệ thống tệp và nhiều bộ nhớ cache để tăng hiệu suất của các hoạt động trên hệ thống tệp tin.
+
+Các đối tượng chính được quản lý động trong VFS là đối tượng dentry và inode; các đối tượng này được quản lý dưới dạng cache để tăng tốc độ truy cập vào hệ thống tệp tin. Khi một người dùng mở một tập tin, bộ nhớ cache dentry sẽ được điền với các mục đại diện cho các cấp thư mục, mà trong đó đại diện cho đường dẫn. Hệ thống cũng tạo ra một inode cho đối tượng đại diện cho tập tin. Hệ thống phát triển một bộ nhớ cache dentry bằng một bảng băm và cấp phát các mục cache dentry từ trình cấp phát slab dentry_cache. Hệ thống sử dụng thuật toán least-recently-used (LRU) để cắt tỉa các mục khi bộ nhớ khan hiếm.
+
+Bộ nhớ cache inode hoạt động như hai danh sách và một bảng băm để tìm kiếm nhanh chóng. Danh sách đầu tiên định nghĩa các inode đã sử dụng, và các inode không sử dụng được đặt trong danh sách thứ hai. Bảng băm cũng lưu trữ các inode đã sử dụng.
+
+Các trình điều khiển thiết bị là các đoạn mã liên kết với mọi thiết bị vật lý hoặc ảo và giúp hệ điều hành quản lý phần cứng của thiết bị. Các chức năng của các trình điều khiển thiết bị bao gồm thiết lập phần cứng, đưa thiết bị liên quan vào và ra khỏi dịch vụ, thu thập dữ liệu từ phần cứng và cung cấp nó cho kernel, truyền dữ liệu từ kernel đến thiết bị, và xác định và xử lý lỗi thiết bị.
+
+### Filesystem Hierarchy Standard (FHS)
+
+Linux có một cấu trúc cây phân cấp duy nhất đại diện cho hệ thống tệp tin như một thực thể duy nhất. Nó hỗ trợ nhiều loại hệ thống tệp tin khác nhau và triển khai một tập hợp cơ bản các khái niệm chung, ban đầu được phát triển cho UNIX.
+
+Một số loại hệ thống tệp tin Linux là Minix, Filesystem Hierarchy Standard (FHS), ext, ext2, ext3, xia, MS-DOS, UMSDOS, VFAT, /proc, NFS, ISO 9660, HPFS, SysV, SMB và NCPFS. Minix là hệ thống tệp tin đầu tiên của Linux.
+
+Dưới đây là một số hệ thống tệp tin phổ biến nhất:
+
+- Filesystem Hierarchy Standard (FHS) định nghĩa cấu trúc thư mục và nội dung của nó trong Linux và các hệ điều hành tương tự Unix.
+- Trong FHS, tất cả các tệp và thư mục đều có mặt dưới thư mục gốc (được biểu thị bằng /).
+
+### Extended File System (ext)
+
+Hệ thống tệp mở rộng (ext), hoặc hệ thống tệp mở rộng đầu tiên, được phát hành vào tháng 4 năm 1992, là hệ thống tệp đầu tiên vượt qua các giới hạn của hệ thống tệp Minix. Ban đầu, nó được phát triển như một phần mở rộng của hệ thống tệp Minix để khắc phục một số hạn chế như kích thước phân vùng tối đa là 64 MB và tên tệp ngắn. Hệ thống tệp ext cung cấp kích thước phân vùng tối đa là 2 GB và độ dài tên tệp tối đa là 255 ký tự. Hạn chế chính của hệ thống tệp này là nó không hỗ trợ các dấu thời gian riêng biệt cho truy cập, sửa đổi inode và dữ liệu. Nó duy trì một danh sách không được sắp xếp của các khối và inode trống, và hệ thống tệp bị phân mảnh.
+
+Hệ thống tệp ext có cấu trúc siêu dữ liệu được lấy cảm hứng từ Hệ thống Tệp UNIX (UFS). Nhược điểm khác của hệ thống tệp này bao gồm chỉ có một dấu thời gian và các danh sách liên kết cho không gian trống, dẫn đến sự phân mảnh và hiệu suất kém. Nó đã được thay thế bởi hệ thống tệp mở rộng thứ hai (ext2).
+
+### Second Extended File System (ext2)
+
+Hệ thống tệp mở rộng thứ hai (ext2) được phát triển bởi Remy Card như một hệ thống tệp mở rộng và mạnh mẽ cho Linux. Là hệ thống tệp thành công nhất cho đến nay trong cộng đồng Linux, Ext2 là cơ sở cho tất cả các bản phân phối Linux hiện đang sử dụng.
+
+Hệ thống tệp ext2 được phát triển dựa trên nguyên tắc lưu trữ dữ liệu dưới dạng các khối dữ liệu cùng độ dài. Mặc dù độ dài có thể thay đổi giữa các hệ thống tệp ext2 khác nhau, kích thước khối của một hệ thống tệp ext2 được đặt trong quá trình tạo.
+
+Hệ thống làm tròn kích thước của mỗi tệp thành một số nguyên khối. Nếu kích thước khối là 1024 byte, thì một tệp có kích thước 1025 byte sẽ chiếm hai khối 1024 byte. Không phải tất cả các khối trong hệ thống tệp chứa dữ liệu; một số khối phải chứa thông tin mô tả cấu trúc của hệ thống tệp. Hệ thống tệp ext2 xác định cấu trúc của hệ thống tệp bằng cách mô tả mỗi tệp trong hệ thống bằng một cấu trúc dữ liệu inode.
+
+Một inode mô tả các khối được sử dụng bởi dữ liệu trong một tệp, cũng như quyền truy cập của tệp, thời gian sửa đổi của tệp và loại tệp. Một inode đơn duy nhất mô tả mỗi tệp trong hệ thống tệp ext2, và mỗi inode có một số duy nhất xác định nó.
+
+Bảng inode lưu trữ tất cả các inode cho hệ thống tệp. Hơn nữa, các thư mục ext2 chỉ đơn giản là các tệp đặc biệt (được mô tả bởi các inode) chứa các con trỏ đến các inode của các mục thư mục của chúng.
+
+#### Superblock
+
+Một superblock lưu trữ thông tin về kích thước và hình dạng của hệ thống tệp ext2. Thông tin này cho phép trình quản lý hệ thống tệp sử dụng và quản lý hệ thống tệp. Thông thường, hệ thống chỉ đọc superblock trong nhóm khối 0 khi người dùng gắn kết hệ thống tệp. Tuy nhiên, mỗi nhóm khối có một bản sao trùng lặp nếu hệ thống tệp bị hỏng.
+
+Một superblock chứa các thông tin sau:
+- **Số thần kỳ (Magic number)**: Nó cho phép phần mềm gắn kết xác minh Superblock cho hệ thống tệp ext2. Đối với phiên bản ext2 hiện tại, số thần kỳ là 0xEF53.
+- **Cấp độ sửa đổi (Revision level)**: Các cấp độ sửa đổi chính và phụ cho phép mã gắn kết xác định liệu hệ thống tệp có hỗ trợ các tính năng chỉ có sẵn trong các phiên bản cụ thể của hệ thống tệp. Có cũng các trường tương thích tính năng giúp mã gắn kết xác định các tính năng mới nào có thể sử dụng an toàn trên hệ thống tệp.
+- **Số lần gắn kết và số lần gắn kết tối đa**: Cùng nhau, chúng cho phép hệ thống xác định xem liệu nó cần kiểm tra đầy đủ hệ thống tệp hay không. Số lần gắn kết tăng lên mỗi khi hệ thống gắn kết hệ thống tệp. Khi số lần gắn kết đạt đến số lần gắn kết tối đa, thông báo cảnh báo "đạt đến số lần gắn kết tối đa, nên chạy e2fsck" được hiển thị.
+- **Số nhóm khối (Block group number)**: Đây là số nhóm khối chứa bản sao của superblock
+- **Kích thước khối (Block size)**: Nó chứa thông tin về kích thước của một khối cho hệ thống tệp theo byte
+- **Số khối trên mỗi nhóm (Blocks per group)**: Đây là một số cố định bằng số khối trong một nhóm
+- **Khối trống (Free blocks)**: Đây là số khối trống trong hệ thống tệp
+- **Inode trống (Free inodes)**: Đây là số inode trống trong hệ thống tệp
+- **Inode đầu tiên (First inode)**: Đây là số inode đầu tiên của hệ thống tệp
+ 
+#### Group Descriptor (Mô tả Nhóm)
+
+Mỗi mô tả nhóm chứa các dữ liệu sau:
+- **Bảng bitmap khối (Block bitmap)**: Đây là số khối của bảng phân bố khối cho nhóm khối. Nó được sử dụng trong quá trình phân bố và hủy bỏ khối.
+- **Bảng bitmap inode (Inode bitmap)**: Đây là số khối của bảng phân bố inode cho nhóm khối. Nó được sử dụng trong quá trình phân bố và hủy bỏ inode.
+- **Bảng inode (Inode table)**: Đây là số khối của khối bắt đầu cho bảng inode cho nhóm khối
+- **Số khối trống, số inode trống và số thư mục đã sử dụng (Free block count, free inode count, and used directory count)**: Tất cả các mô tả nhóm cùng nhau tạo thành bảng mô tả nhóm. Mỗi nhóm khối có toàn bộ bảng mô tả nhóm.
+
+#### Ext2 Inode
+
+Trong hệ thống tệp ext2, inode là khối xây dựng cơ bản. Mỗi file và thư mục trong hệ thống tệp đều có một và chỉ một inode để mô tả.
+
+Hệ thống tệp lưu trữ các inode ext2 cho mỗi nhóm khối trong bảng inode, cùng với một bảng bitmap cho phép hệ thống theo dõi các inode đã được phân bố và chưa được phân bố.
+
+Một inode ext2 chứa các trường sau:
+
+- **Chế độ (Mode)**: Trường này chứa hai thông tin: mô tả của inode này và quyền truy cập của người dùng. Trong ext2, một inode có thể mô tả một file, thư mục, liên kết tượng trưng, thiết bị khối, thiết bị ký tự hoặc đường ống FIFO.
+- **Thông tin chủ sở hữu**: Trường này chứa thông tin về người sở hữu của file hoặc thư mục, bao gồm các định danh người dùng và nhóm. Nó cho phép hệ thống tệp xác định quyền truy cập một cách chính xác.
+- **Kích thước**: Trường này chứa kích thước của file trong byte.
+- **Dấu thời gian**: Trường này chứa thời gian tạo inode và thời gian sửa đổi lần cuối cùng.
+- **Các khối dữ liệu**: Các khối dữ liệu là các con trỏ đến các khối chứa dữ liệu được mô tả bởi inode này. 12 con trỏ đầu tiên trỏ đến các khối vật lý chứa dữ liệu mô tả bởi inode này, và 3 con trỏ cuối cùng chứa các mức đánh dấu liên tiếp. Ví dụ, con trỏ khối gián tiếp kép trỏ đến một khối chứa con trỏ đến các khối con trỏ đến các khối dữ liệu.
+
+#### Thư mục ext2
+
+Trong hệ thống tệp ext2, thư mục là các tệp đặc biệt được sử dụng để tạo và giữ đường dẫn truy cập đến các tệp trong hệ thống tệp. Một tệp thư mục là một danh sách các mục thư mục, mỗi mục chứa các thông tin sau.
+
+- **Inode**: Đây là inode cho mục thư mục và là một chỉ mục vào mảng các inode trong bảng inode của nhóm khối.
+Độ dài tên (Name length): Đây là độ dài của mục thư mục theo byte.
+- **Tên (Name)**: Đây là tên của mục thư mục.
+
+
 
 
