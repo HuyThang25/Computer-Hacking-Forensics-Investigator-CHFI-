@@ -49,7 +49,7 @@ Những yếu tố này cùng nhau tạo thành phần trên đầu sector (sect
 
 Xác định đỉa chỉ sector:
 
-- Cylinders, heads, và sector (CHS) xác định địa chỉ của từng sector riêng lẻ trên đĩa. (có thể hiểu là Cylinders để xác định tập các track có cùng một khoảng các với tâm của các đĩa, head giúp xác định đĩa nào, sevtor là xác định đoạn dữ liệu trên track)
+- Cylinders, heads, và sector (CHS) xác định địa chỉ của từng sector riêng lẻ trên đĩa. (có thể hiểu là Cylinders để xác định tập các track có cùng một khoảng các với tâm của các đĩa, head giúp xác định đĩa nào, sector là xác định đoạn dữ liệu trên track)
 - Khi một đĩa cứng được định dạng, nó được chia thành các track và sector.
 - Ví dụ, đĩa cứng đã được định dạng có thể chứa 50 track, mỗi track được chia thành 10 sector.
 - Số track và số sector được sử dụng bởi hệ điều hành và ổ đĩa để xác định thông tin được lưu trữ.
