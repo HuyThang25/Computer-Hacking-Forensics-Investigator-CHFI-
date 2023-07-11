@@ -19,7 +19,7 @@ HDDs khác nhau về các đo lường sau đây:
 
 ## Hiểu về Tracks
 
-Mọi đĩa trong HDDs có 2 mặt, và mỗi mặt lại được chia thành nhiều vòng gọi là tracks (đường tròn). Tracks lưu trữ tất cả thông tin trên ổ cứng, và các tracks trên phân vùng đĩa chứa các khối dữ liệu. Một ổ cứng tiêu chuẩn chứa lên đến 10.000 tracks trên mỗi đĩa. Đầu đọc và ghi dữ liệu the thứ tựtừ tâm đĩa ra ngoài vành. Kiểu sắp xếp dữ liệu này giúp dễ dàng truy cập vào bất cứ vùng nào của ổ cứng, đó là lý do tại sao nó được gọi là "random-access storage devices (thiết bị truy cập ngẫu nhiên)".
+Mọi đĩa trong HDDs có 2 mặt, và mỗi mặt lại được chia thành nhiều vòng gọi là tracks (đường tròn). Tracks lưu trữ tất cả thông tin trên ổ cứng, và các tracks trên phân vùng đĩa chứa các khối dữ liệu. Một ổ cứng tiêu chuẩn chứa lên đến 10.000 tracks trên mỗi đĩa. Đầu đọc và ghi dữ liệu theo thứ tự từ tâm đĩa ra ngoài vành. Kiểu sắp xếp dữ liệu này giúp dễ dàng truy cập vào bất cứ vùng nào của ổ cứng, đó là lý do tại sao nó được gọi là "random-access storage devices (thiết bị truy cập ngẫu nhiên)".
 
 Mỗi track bao gồm một lượng các đơn vị nhỏ hơn goi là sectors, và tất cả đĩa trong HDD có mật độ track giống nhau. Mật độ track đề cập đến số vòng trên một diện tích trên bề mặt đĩa; nó được tối ưu hoá nên mỗi vùng trên bề mặt đĩa sẽ có thể chứa tối đa số bit. Mật độ track do đó mà cũng quyết định khả năng lưu trữ ô cứng.
 
