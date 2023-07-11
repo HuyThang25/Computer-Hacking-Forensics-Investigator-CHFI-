@@ -10,7 +10,12 @@ HDDs dễ bị hỏng về mặt vật lý vì chứa những bộ phận chuy�
 
 HDDs khác nhau về các đo lường sau đây:
 
-- 
+- Capacity
+- Interface used
+- Speed in RPM
+- Seek time
+- Access time
+- Transfer time
 
 ## Hiểu về Tracks
 
