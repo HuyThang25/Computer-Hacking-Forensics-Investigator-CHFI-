@@ -4,7 +4,7 @@ HDDs và SSDs lưu trữ dữ liệu trong máy tính. HDDs ghi dữ liệu bằ
 
 HDD là một thiết bị lưu trữ dữ liệu không bay hơi (không bị mất khi tắt máy) được sử dụng trên hệ thống máy tính. Một ổ cứng lưu trữ dữ liệu sử dụng phương thức giống với file cabinet. Người dùng, khi cần có thể truy cập dữ liệu và chương trình. Khi máy tính lưu trữ chương trình hay dữ liệu, hệ thống sẽ sao chép dữ liệu từ HDD tới khu vự dễ bay hơi (RAM). Khi người dùng hay hệ thống thay đổi tệp, máy tính lưu tệp bằng cách thay thế tệp cũ thành một tệp mới. HDD ghi dữ liệu bằng từ tính vào ổ cứng.
 
-HDD bao gồm nhữn đĩa quay, và tốc độ đọc/ ghi của nó phụ thuộc và tiếp độ quay của đĩa (số vòng trên phút - RPM). Đĩa quay càng nhanh thì tốc độ đọc/ghi của HDD càng nhanh.
+HDD bao gồm những đĩa quay, và tốc độ đọc/ ghi của nó phụ thuộc và tiếp độ quay của đĩa (số vòng trên phút - RPM). Đĩa quay càng nhanh thì tốc độ đọc/ghi của HDD càng nhanh.
 
 HDDs dễ bị hỏng về mặt vật lý vì chứa những bộ phận chuyển động. Trong thời gian dài thì sẽ bị mòn và gây hỏng hóc cho ổ cứng.
 
