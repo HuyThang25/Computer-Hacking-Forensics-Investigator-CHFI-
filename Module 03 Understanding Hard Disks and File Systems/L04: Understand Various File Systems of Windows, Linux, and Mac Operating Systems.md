@@ -334,6 +334,86 @@ Trong hệ thống tệp ext2, thư mục là các tệp đặc biệt được 
 Độ dài tên (Name length): Đây là độ dài của mục thư mục theo byte.
 - **Tên (Name)**: Đây là tên của mục thư mục.
 
+### Hệ thống tệp mở rộng thứ ba (ext3)
+
+Được phát triển bởi Stephen Tweedie vào năm 2001, hệ thống tệp mở rộng thứ ba (ext3) là một hệ thống tệp ghi nhật ký được sử dụng trong hệ điều hành GNU/Linux. Đây là phiên bản nâng cao của hệ thống tệp ext2. Lợi ích chính của hệ thống tệp này là khả năng ghi nhật ký, giúp cải thiện tính tin cậy của hệ thống máy tính. Nó có thể được gắn kết và sử dụng như một hệ thống tệp ext2 và có thể sử dụng tất cả các chương trình được phát triển trong hệ thống tệp ext2.
+
+Kích thước tối đa của một tệp ext3 đơn lẻ nằm trong khoảng từ 16 GB đến 2 TB, và kích thước tối đa của toàn bộ hệ thống tệp ext3 nằm trong khoảng từ 2 TB đến 32 TB. Hệ thống tệp ext3 cũng cung cấp tính toàn vẹn dữ liệu tốt hơn. Nó đảm bảo rằng dữ liệu tương thích với trạng thái của hệ thống tệp. Hơn nữa, ext3 nhanh hơn ext2 vì tính năng ghi nhật ký tối ưu hóa chuyển động đầu đĩa cứng. Nó cũng cung cấp ba chế độ ghi nhật ký để tùy chọn giữa việc tối đa hóa tính toàn vẹn dữ liệu và tối ưu hóa tốc độ. Hệ thống tệp ext3 cũng rất đáng tin cậy và có khả năng chuyển đổi phân vùng ext2 sang ext3 và ngược lại mà không cần phải phân vùng lại và sao lưu dữ liệu.
+
+Lệnh để chuyển đổi ext2 sang ext3:
+
+# /sbin/tune2fs -j <tên-phân-vùng>
+
+Ví dụ, để chuyển đổi một hệ thống tệp ext2 nằm trên phân vùng /dev/hda5 thành một hệ thống tệp ext3, bạn có thể sử dụng lệnh sau:
+
+# /sbin/tune2fs -j /dev/hda5
+
+Các tính năng của Ext3
+
+- **Toàn vẹn dữ liệu:** Nó cung cấp tính toàn vẹn dữ liệu mạnh mẽ cho các sự kiện xảy ra do tắt máy hệ thống. Người dùng có thể chọn loại và mức bảo vệ cho dữ liệu nhận được.
+- **Tốc độ:** Vì hệ thống tệp ext3 là một hệ thống tệp ghi nhật ký, nó có hiệu suất cao hơn trong hầu hết các trường hợp so với ext2. Người dùng có thể chọn tốc độ tối ưu từ ba chế độ ghi nhật ký khác nhau.
+- **Chuyển đổi dễ dàng:** Người dùng có thể dễ dàng chuyển đổi hệ thống tệp từ ext2 sang ext3 và tăng hiệu suất của hệ thống bằng cách sử dụng hệ thống tệp ghi nhật ký mà không cần định dạng lại.
+
+### Hệ thống tệp mở rộng thứ tư (ext4)
+
+Hệ thống tệp mở rộng thứ tư (ext4) là một hệ thống tệp ghi nhật ký được phát triển như là người kế nhiệm của hệ thống tệp ext3 phổ biến. Nó cung cấp khả năng mở rộng và đáng tin cậy tốt hơn so với ext3 để hỗ trợ các hệ thống tệp lớn trên các máy tính 64 bit để đáp ứng nhu cầu về dung lượng đĩa ngày càng tăng.
+
+Hệ thống tệp ext4 cho phép ghi nhật ký theo mặc định và cho phép người dùng gắn kết một hệ thống tệp ext3 như một hệ thống tệp ext4. Hệ thống tệp này hỗ trợ Linux Kernel từ phiên bản 2.6.19 trở đi.
+
+#### Các tính năng chính
+- **Kích thước hệ thống tệp:** Ext4 hỗ trợ kích thước tệp tối đa lên đến 16 TB và kích thước thể tích tối đa khoảng 1 EiB (exbibyte)
+- **Extents:** Nó thay thế hệ thống ánh xạ khối được tìm thấy trong ext2 và ext3 để tăng hiệu suất và giảm hiện tượng mảnh vụn
+- **Delayed allocation:** Nó cải thiện hiệu suất và giảm hiện tượng mảnh vụn bằng cách trì hoãn việc phân bổ đến khi hệ thống xả dữ liệu vào đĩa
+- **Phân bổ nhiều khối:** Nó phân bổ nhiều tệp liên tục trên một đĩa, từ đó giảm công việc gọi bộ phân bổ khối và tối ưu hóa phân bổ bộ nhớ
+- **Tăng tốc độ kiểm tra hệ thống tệp (fsck):** Nó đánh dấu các nhóm khối và phần không được phân bổ và bỏ qua các phần đã đánh dấu khi thực hiện kiểm tra. Nhờ đó, nó hỗ trợ tốc độ kiểm tra hệ thống tệp nhanh hơn.
+- **Kiểm tra tổng kiểm tra nhật ký:** Nó sử dụng kiểm tra tổng kiểm tra trong nhật ký để cải thiện tính đáng tin cậy
+-** Phân bổ trước bền vững:** Hệ thống tệp có thể phân bổ không gian trên đĩa cho một tệp bằng cách ghi số không vào nó trong quá trình tạo
+- **Cải thiện thông tin thời gian:** Nó cung cấp thông tin thời gian đo bằng nanosecond và hỗ trợ cho thông tin thời gian tạo
+- **Tương thích ngược:** Hệ thống tệp tương thích ngược và cho phép người dùng gắn kết ext3 và ext2 như là ext4.
+
+### Hiểu về Superblocks, Inodes và Data Blocks
+
+##### Superblock
+
+Một superblock chứa siêu dữ liệu của một hệ thống tệp; nó bao gồm chi tiết như kích thước của hệ thống tệp, kích thước khối, vị trí và kích thước của bảng inode, các khối đã được sử dụng và trống và số lượng tương ứng của chúng, thông tin về kích thước của các nhóm khối, thông tin về bản đồ khối đĩa và mức độ sử dụng.
+
+Việc truy cập vào superblock của một hệ thống tệp là cần thiết để có thể yêu cầu truy cập vào bất kỳ tệp nào trong hệ thống tệp.
+
+Một hệ thống tệp không thể được gắn kết nếu không thể truy cập vào superblock của nó; do đó, các tệp của nó không thể được truy cập. Nếu người dùng cố gắng gắn kết một hệ thống tệp có superblock bị hỏng hoặc bị hư hỏng, việc gắn kết sẽ thất bại và thường dẫn đến thông báo lỗi như "không thể đọc superblock."
+
+Vì sự hỏng hóc của một superblock có thể phá hủy dữ liệu quan trọng, các bản sao dự phòng của dữ liệu được tạo tự động tại các khoảng thời gian nhất định trên hệ thống tệp (ví dụ: ở đầu mỗi nhóm khối).
+
+Đối với mỗi hệ thống tệp đã gắn kết, Linux cũng duy trì một bản sao của superblock trong bộ nhớ.
+
+Để xem thông tin superblock của một hệ thống tệp, sử dụng lệnh:
+dumpe2fs /dev/sda1 | grep –i superblock
+
+###### Inode
+
+Inode lưu trữ siêu dữ liệu của các tệp và có thể cung cấp cho các nhà điều tra những chi tiết quan trọng liên quan đến các tệp.
+
+Siêu dữ liệu của mỗi tệp được lưu trữ trong một inode dưới dạng một bảng. Inode thường tồn tại gần đầu một phân vùng. Mỗi inode được xác định bằng một số inode hoặc số chỉ mục inode. Mỗi tệp trên hệ thống Linux sẽ có một số inode duy nhất được gán cho nó khi nó được tạo.
+
+Số inode của một tệp lưu trữ các thuộc tính như kích thước của tệp, loại tệp, quyền truy cập và kiểm soát truy cập, ngày/giờ, vị trí trên đĩa, vị trí tệp, v.v. Các tệp trong mỗi thư mục mang một số inode riêng, cùng với tên tệp.
+
+Để xem số inode được gán cho các tệp hoặc thư mục, chạy lệnh sau:
+
+	**ls -il**
+
+Chú ý: Trong ảnh chụp màn hình trên, các số xuất hiện bên trái là số inode.
+
+##### Data Blocks
+
+Dưới đây là các chức năng của các khối dữ liệu trong hệ thống tệp Linux:
+
+- Các khối dữ liệu lưu trữ dữ liệu thực tế của một tệp. Chúng cũng chứa các thư mục.
+- Một khối dữ liệu chỉ có thể được phân bổ cho một tệp trong một hệ thống tệp.
+- Trong trường hợp một khối dữ liệu không được phân bổ cho bất kỳ tệp nào, hệ thống coi nó như một khối dữ liệu có sẵn và phân bổ nó cho một tệp khi cần thiết.
+- Khi một tệp bị xóa, khối dữ liệu liên quan đến nó trở thành tự do và trống rỗng và có thể được phân bổ cho một tệp khác để lưu trữ nội dung của nó.
+- Bằng cách truy xuất các khối dữ liệu của một tệp, các nhà điều tra có thể tìm thấy thông tin về dữ liệu thực tế được lưu trữ trong tệp.
+
+
+
 
 
 
