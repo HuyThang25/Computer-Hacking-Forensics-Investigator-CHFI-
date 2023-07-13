@@ -1,4 +1,4 @@
-+Hex editor được thiết kế để phân tích và chỉnh sửa các tệp tin, bộ nhớ chính, hình ảnh đĩa và cấu trúc của chúng, vv. Phần này sẽ thảo luận về việc xem xét các định dạng tệp tin khác nhau như jpg, png, bmp, pdf, zip và docx bằng hex editor.
+Hex editor được thiết kế để phân tích và chỉnh sửa các tệp tin, bộ nhớ chính, hình ảnh đĩa và cấu trúc của chúng, vv. Phần này sẽ thảo luận về việc xem xét các định dạng tệp tin khác nhau như jpg, png, bmp, pdf, zip và docx bằng hex editor.
 
 ## Phân tích Tệp hình ảnh: JPEG
 
