@@ -44,7 +44,7 @@ Source: http://www.recovermyfiles.com
 
 EaseUS Data Recovery Wizard là một phần mềm khôi phục dữ liệu được sử dụng để thực hiện khôi phục định dạng và khôi phục tệp tin đã bị xóa khỏi Thùng rác hoặc dữ liệu bị mất do mất phân vùng hoặc hỏng, lỗi phần mềm, nhiễm virus, tắt đột ngột hoặc bất kỳ lý do không xác định nào dưới Windows 10, 8, 7, 2000/XP/Vista/2003/2008 R2 SP1/Windows 7 SP1. Phần mềm này hỗ trợ RAID phần cứng và ổ cứng, ổ USB, thẻ SD, thẻ nhớ, v.v.
   
-** Các tính năng:**
+**Các tính năng:**
 
    - Chỉ định loại tệp tin trước khi khôi phục để tìm kiếm các tệp tin đã mất nhanh chóng
    - Lưu kết quả tìm kiếm trước đó để tiếp tục khôi phục liên tục
