@@ -60,7 +60,15 @@ Có ba kỹ thuật phổ biến để crack mật khẩu và chúng được th
 		
 	 Kỹ thuật này bao gồm tấn công brute-force, dictionary và syllable (một tấn công syllable kết hợp cả tấn công brute-force và dictionary và thường được sử dụng để crack mật khẩu không bao gồm một từ thực tế mà là một hỗn hợp của các ký tự và âm tiết). Kẻ tấn công có thể sử dụng nhiều từ điển, kỹ thuật brute-force hoặc đơn giản là thử đoán mật khẩu.
 
+### Sử dụng Rainbow Tables để Crack Hashed Passwords
 
+Một cuộc tấn công màu cầu vồng là một hiện thực hóa của kỹ thuật trao đổi thời gian-bộ nhớ mã hóa dựa trên bảng màu cầu vồng.
+
+Một bảng màu cầu vồng là một bảng tra cứu được sử dụng để phục hồi mật khẩu văn bản thuần túy từ mật văn bản đã được mã hóa. Nó bao gồm tất cả các kết hợp văn bản thuần túy có thể cho các mật khẩu đã được mã hóa được tạo bằng một thuật toán băm cụ thể. Bảng này chứa danh sách từ như các tệp từ điển và danh sách tấn công brute-force cùng với các giá trị băm đã tính toán của chúng.
+
+Kẻ tấn công sử dụng bảng này để tìm kiếm mật khẩu và cố gắng khôi phục nó từ các giá trị băm mật khẩu. Kẻ tấn công tính toán băm cho một danh sách các mật khẩu có thể có và so sánh nó với bảng băm đã được tính toán trước đó (bảng màu cầu vồng) để tìm một kết quả khớp.
+
+Việc khôi phục mật khẩu dễ dàng bằng cách so sánh các giá trị băm mật khẩu đã bắt được với các bảng băm được tính toán trước đó.
 
 
 
